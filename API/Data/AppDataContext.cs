@@ -10,6 +10,8 @@ public class AppDataContext : DbContext
     }
 
     //Classes que vão se tornar tabelas no banco de dados
-    public DbSet<Produto> Produtos { get; set; }
-    public DbSet<Categoria> Categorias { get; set; }
+    public DbSet<Animal> Animais { get; set; }
+    public DbSet<Evento> Eventos { get; set; }
+    public DbSet<ONG> ONGs { get; set; }
+    public DbSet<Pessoa> Pessoas { get; set; }
 }

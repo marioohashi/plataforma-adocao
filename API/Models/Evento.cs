@@ -1,9 +1,9 @@
 ﻿namespace API.Models;
-public class Produto
+public class Evento
 {
-    public Produto() => CriadoEm = DateTime.Now;
+    public Evento() => CriadoEm = DateTime.Now;
 
-    public int ProdutoId { get; set; }
+    public int EventoId { get; set; }
     public string? Nome { get; set; }
     public string? Descricao { get; set; }
     public int Quantidade { get; set; }
