@@ -1,6 +1,6 @@
 namespace API.Models;
-public class Categoria
+public class Animal
 {
-    public int CategoriaId { get; set; }
+    public int AnimalId { get; set; }
     public string? Nome { get; set; }
 }

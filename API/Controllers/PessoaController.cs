@@ -5,26 +5,26 @@ using Microsoft.AspNetCore.Mvc;
 namespace API;
 
 [ApiController]
-[Route("api/produto")]
-public class ProdutoController : ControllerBase
+[Route("api/pessoa")]
+public class PessoaController : ControllerBase
 {
     private readonly AppDataContext _ctx;
 
-    public ProdutoController(AppDataContext ctx)
+    public PessoaController(AppDataContext ctx)
     {
         _ctx = ctx;
     }
-    private static List<Produto> produtos = new List<Produto>();
+    private static List<Pessoa> pessoas = new List<Pessoa>();
 
     //GET: api/produto/listar
     [HttpGet]
     [Route("listar")]
     public IActionResult Listar()
     {
-        List<Produto> produtos = _ctx.Produtos.ToList();
-        return produtos.Count == 0 ? NotFound() : Ok(produtos);
+        List<Pessoa> pessoas = _ctx.Pessoas.ToList();
+        return pessoas.Count == 0 ? NotFound() : Ok(pessoas);
     }
-    //_ctx.Produtos.ToList().Count == 0 ? NotFound() : Ok(_ctx.Produtos.ToList());
+    //_ctx.Pessoas.ToList().Count == 0 ? NotFound() : Ok(_ctx.Pessoas.ToList());
 
     //GET: api/produto/buscar/{bolacha}
     [HttpGet]
@@ -33,7 +33,7 @@ public class ProdutoController : ControllerBase
     {
         // AppDataContext context = new AppDataContext();
         // context.
-        foreach (Produto produtoCadastrado in _ctx.Produtos.ToList())
+        foreach (Pessoa produtoCadastrado in _ctx.Pessoas.ToList())
         {
             if (produtoCadastrado.Nome == nome)
             {
@@ -46,9 +46,9 @@ public class ProdutoController : ControllerBase
     //POST: api/produto/cadastrar
     [HttpPost]
     [Route("cadastrar")]
-    public IActionResult Cadastrar([FromBody] Produto produto)
+    public IActionResult Cadastrar([FromBody] Pessoa produto)
     {
-        _ctx.Produtos.Add(produto);
+        _ctx.Pessoas.Add(produto);
         _ctx.SaveChanges();
         return Created("", produto);
     }
@@ -58,12 +58,12 @@ public class ProdutoController : ControllerBase
     public IActionResult Deletar([FromRoute] int id)
     {
         //Utilizar o FirstOrDefault com a Expressão lambda
-        Produto produto = _ctx.Produtos.Find(id);
+        Pessoa produto = _ctx.Pessoas.Find(id);
         if (produto == null)
         {
             return NotFound();
         }
-        _ctx.Produtos.Remove(produto);
+        _ctx.Pessoas.Remove(produto);
         _ctx.SaveChanges();
         return Ok(produto);
     }
