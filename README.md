@@ -3,6 +3,7 @@
 Conectando Doadores, ONGs e Adotantes para um Futuro Melhor para Nossos Amigos Peludos
 
 1.  Resumo
+
     O projeto visa desenvolver uma plataforma com a missão de facilitar a adoção responsável de animais de estimação, conectando doadores e ONGs envolvidas no cuidado de animais com pessoas interessadas em oferecer um lar amoroso. Isso contribui para reduzir o abandono e controlar a população de animais de rua, promovendo a conscientização sobre a importância da adoção responsável. A plataforma busca criar um ambiente seguro onde o bem-estar dos animais seja priorizado, fortalecendo a relação entre seres humanos e seus companheiros animais.
 
     1.1 Para os Doadores e ONGs
@@ -46,4 +47,4 @@ Conectando Doadores, ONGs e Adotantes para um Futuro Melhor para Nossos Amigos P
     3.4 Pesquisar e filtrar animais disponíveis para doação
     A funcionalidade de pesquisa e filtro é fundamental para os usuários que desejam encontrar o animal perfeito para adoção. Ela implementa um sistema de busca avançada que permite aos usuários procurar animais de acordo com critérios específicos. Os critérios de filtragem incluem espécie, raça, idade, porte, comportamento e localização. Isso ajuda os potenciais adotantes a encontrar animais que atendam às suas preferências e necessidades, tornando o processo de adoção mais eficiente e personalizado.
 
-4.  Diagrama de Classes
+3.  Diagrama de Classes
