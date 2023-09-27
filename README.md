@@ -7,11 +7,13 @@ Conectando Doadores, ONGs e Adotantes para um Futuro Melhor para Nossos Amigos P
     O projeto visa desenvolver uma plataforma com a missão de facilitar a adoção responsável de animais de estimação, conectando doadores e ONGs envolvidas no cuidado de animais com pessoas interessadas em oferecer um lar amoroso. Isso contribui para reduzir o abandono e controlar a população de animais de rua, promovendo a conscientização sobre a importância da adoção responsável. A plataforma busca criar um ambiente seguro onde o bem-estar dos animais seja priorizado, fortalecendo a relação entre seres humanos e seus companheiros animais.
 
     1.1 Para os Doadores e ONGs
+    
     Oferece um espaço dedicado para listar animais disponíveis para adoção, permitindo uma maior visibilidade e alcance para os animais resgatados ou que necessitam de um novo lar.
     Facilita a comunicação e interação com potenciais adotantes, garantindo que os animais sejam colocados em lares que ofereçam as condições adequadas para seu bem-estar.
     Contribui para a conscientização sobre a importância da doação e do resgate de animais, promovendo a filosofia de "adote, não compre".
 
     1.2 Para os Adotantes
+    
     Proporciona uma plataforma confiável para encontrar animais de estimação que estejam em busca de um novo lar, oferecendo uma variedade de opções para atender às preferências e necessidades de cada adotante.
     Facilita o processo de adoção ao fornecer informações detalhadas sobre os animais, incluindo histórico médico e comportamental, facilitando a escolha de um animal compatível com o estilo de vida do adotante.
     Estabelece um canal seguro de comunicação com doadores e ONGs, possibilitando esclarecimento de dúvidas e agendamento de visitas.
@@ -47,4 +49,4 @@ Conectando Doadores, ONGs e Adotantes para um Futuro Melhor para Nossos Amigos P
     3.4 Pesquisar e filtrar animais disponíveis para doação
     A funcionalidade de pesquisa e filtro é fundamental para os usuários que desejam encontrar o animal perfeito para adoção. Ela implementa um sistema de busca avançada que permite aos usuários procurar animais de acordo com critérios específicos. Os critérios de filtragem incluem espécie, raça, idade, porte, comportamento e localização. Isso ajuda os potenciais adotantes a encontrar animais que atendam às suas preferências e necessidades, tornando o processo de adoção mais eficiente e personalizado.
 
-3.  Diagrama de Classes
+4.  Diagrama de Classes
