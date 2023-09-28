@@ -1,0 +1,14 @@
+### Listar de ongs
+GET https://localhost:7195/api/ong/listar
+
+### Buscar ongs
+GET https://localhost:7195/api/ong/buscar/NomeOng
+
+### Cadastrar ong
+POST https://localhost:7195/api/ong/cadastrar
+Content-Type: application/json
+
+{
+    "nome" : "Sophia", 
+    //adicionar
+}

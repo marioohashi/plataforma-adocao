@@ -68,4 +68,35 @@ public class AnimalController : ControllerBase
         return Ok(animal);
     }
 
+    [HttpPost]
+    [Route("adicionarVideos/{id}")]
+    public IActionResult AdicionarVideos([FromRoute] int id, [FromBody] List<string> videos)
+    {
+        Animal animal = _ctx.Animais.Find(id);
+        if (animal == null)
+        {
+            return NotFound();
+        }
+
+        animal.Videos.AddRange(videos);
+        _ctx.SaveChanges();
+
+        return Ok(animal);
+    }
+
+    [HttpPost]
+    [Route("adicionarFotos/{id}")]
+    public IActionResult AdicionarFotos([FromRoute] int id, [FromBody] List<string> fotos)
+    {
+        Animal animal = _ctx.Animais.Find(id);
+        if (animal == null)
+        {
+            return NotFound();
+        }
+
+        animal.Fotos.AddRange(fotos);
+        _ctx.SaveChanges();
+
+        return Ok(animal);
+    }
 }
