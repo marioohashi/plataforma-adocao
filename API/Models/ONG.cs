@@ -9,12 +9,14 @@ public class ONG
     public string? Historico { get; set; }
     public string? InformacoesContato { get; set; }
 
-    public List<string>? HabilidadesColaboradores { get; set; }
-    public List<string>? AreasAtuacao { get; set; }
-    public List<Evento>? Eventos { get; set; }
-    public List<Animal>? AnimaisDoados { get; set; }
-    public List<Animal>? AnimaisDoacao { get; set; }
-    public List<Animal>? AnimaisInteresse { get; set; }
+    // RELAÇÂO ENTRE ONG E EVENTO
+    
+    // public List<string>? HabilidadesColaboradores { get; set; }
+    // public List<string>? AreasAtuacao { get; set; }
+    // public List<Evento>? Eventos { get; set; }
+    // public List<Animal>? AnimaisDoados { get; set; }
+    // public List<Animal>? AnimaisDoacao { get; set; }
+    // public List<Animal>? AnimaisInteresse { get; set; }
 
     public DateTime CriadoEm { get; set; }
 }
