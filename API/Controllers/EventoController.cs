@@ -2,70 +2,84 @@
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API;
-
-[ApiController]
-[Route("api/evento")]
-public class EventoController : ControllerBase
+namespace API
 {
-    private readonly AppDataContext _ctx;
-
-    public EventoController(AppDataContext ctx)
+    [ApiController]
+    [Route("api/evento")]
+    public class EventoController : ControllerBase
     {
-        _ctx = ctx;
-    }
-    private static List<Evento> eventos = new List<Evento>();
+        private readonly AppDataContext _ctx;
 
-    //GET: api/evento/listar
-    [HttpGet]
-    [Route("listar")]
-    public IActionResult Listar()
-    {
-        List<Evento> eventos = _ctx.Eventos.ToList();
-        return eventos.Count == 0 ? NotFound() : Ok(eventos);
-    }
-    //_ctx.Eventos.ToList().Count == 0 ? NotFound() : Ok(_ctx.Eventos.ToList());
-
-    //GET: api/evento/buscar/{bolacha}
-    [HttpGet]
-    [Route("buscar/{nome}")]
-    public IActionResult Buscar([FromRoute] string nome)
-    {
-        // AppDataContext context = new AppDataContext();
-        // context.
-        foreach (Evento eventoCadastrado in _ctx.Eventos.ToList())
+        // Construtor da classe. Recebe uma instância de AppDataContext como parâmetro.
+        public EventoController(AppDataContext ctx)
         {
-            if (eventoCadastrado.Nome == nome)
-            {
-                return Ok(eventoCadastrado);
-            }
+            _ctx = ctx;
         }
-        return NotFound();
-    }
 
-    //POST: api/evento/cadastrar
-    [HttpPost]
-    [Route("cadastrar")]
-    public IActionResult Cadastrar([FromBody] Evento evento)
-    {
-        _ctx.Eventos.Add(evento);
-        _ctx.SaveChanges();
-        return Created("", evento);
-    }
+        // Lista de eventos em memória. Nota: Este não é utilizado no código atual e pode ser removido.
+        private static List<Evento> eventos = new List<Evento>();
 
-    [HttpDelete]
-    [Route("deletar/{id}")]
-    public IActionResult Deletar([FromRoute] int id)
-    {
-        //Utilizar o FirstOrDefault com a Expressão lambda
-        Evento evento = _ctx.Eventos.Find(id);
-        if (evento == null)
+        // Rota para listar todos os eventos.
+        [HttpGet]
+        [Route("listar")]
+        public IActionResult Listar()
         {
+            // Obtém a lista de eventos do contexto do banco de dados.
+            List<Evento> eventos = _ctx.Eventos.ToList();
+            // Verifica se a lista está vazia. Se estiver, retorna uma resposta 404 Not Found. 
+            // Caso contrário, retorna a lista de eventos como uma resposta 200 OK.
+            return eventos.Count == 0 ? NotFound() : Ok(eventos);
+        }
+
+        // Rota para buscar um evento por nome.
+        [HttpGet]
+        [Route("buscar/{nome}")]
+        public IActionResult Buscar([FromRoute] string nome)
+        {
+            // Loop através de todos os eventos cadastrados.
+            foreach (Evento eventoCadastrado in _ctx.Eventos.ToList())
+            {
+                // Se o nome do evento corresponder ao nome passado na rota, retorna o evento encontrado.
+                if (eventoCadastrado.Nome == nome)
+                {
+                    return Ok(eventoCadastrado);
+                }
+            }
+            // Se nenhum match for encontrado, retorna uma resposta 404 Not Found.
             return NotFound();
         }
-        _ctx.Eventos.Remove(evento);
-        _ctx.SaveChanges();
-        return Ok(evento);
-    }
 
+        // Rota para cadastrar um novo evento.
+        [HttpPost]
+        [Route("cadastrar")]
+        public IActionResult Cadastrar([FromBody] Evento evento)
+        {
+            // Adiciona o novo evento ao contexto do banco de dados.
+            _ctx.Eventos.Add(evento);
+            // Salva as mudanças no banco de dados.
+            _ctx.SaveChanges();
+            // Retorna o evento criado como uma resposta 201 Created.
+            return Created("", evento);
+        }
+
+        // Rota para deletar um evento por ID.
+        [HttpDelete]
+        [Route("deletar/{id}")]
+        public IActionResult Deletar([FromRoute] int id)
+        {
+            // Busca o evento pelo ID.
+            Evento evento = _ctx.Eventos.Find(id);
+            // Se o evento não for encontrado, retorna uma resposta 404 Not Found.
+            if (evento == null)
+            {
+                return NotFound();
+            }
+            // Remove o evento do contexto do banco de dados.
+            _ctx.Eventos.Remove(evento);
+            // Salva as mudanças no banco de dados.
+            _ctx.SaveChanges();
+            // Retorna o evento removido como uma resposta 200 OK.
+            return Ok(evento);
+        }
+    }
 }

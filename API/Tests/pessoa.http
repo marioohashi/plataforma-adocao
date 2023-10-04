@@ -9,6 +9,8 @@ POST https://localhost:7195/api/pessoa/cadastrar
 Content-Type: application/json
 
 {
-    "nome" : "Sophia", 
-    //adicionar
+    "Nome" : "Joao das Neves",
+    "endereco": "Endereço",
+    "numeroTelefone": "(41)789413213",
+    "email": "contato@gmail.com"
 }

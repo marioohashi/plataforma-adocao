@@ -2,13 +2,15 @@
 GET https://localhost:7195/api/ong/listar
 
 ### Buscar ongs
-GET https://localhost:7195/api/ong/buscar/NomeOng
+GET https://localhost:7195/api/ong/buscar/ONG2
 
 ### Cadastrar ong
 POST https://localhost:7195/api/ong/cadastrar
 Content-Type: application/json
 
 {
-    "nome" : "Sophia", 
-    //adicionar
+    "nome": "ONG3",
+    "missao": "Missão da ONG",
+    "historico": "Historico da ONG",
+    "informacoesContato": "contato@ong.com.br"
 }

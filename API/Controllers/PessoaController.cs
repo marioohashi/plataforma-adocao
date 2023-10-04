@@ -16,7 +16,7 @@ public class PessoaController : ControllerBase
     }
     private static List<Pessoa> pessoas = new List<Pessoa>();
 
-    //GET: api/produto/listar
+    //GET: api/pessoa/listar
     [HttpGet]
     [Route("listar")]
     public IActionResult Listar()
@@ -26,31 +26,31 @@ public class PessoaController : ControllerBase
     }
     //_ctx.Pessoas.ToList().Count == 0 ? NotFound() : Ok(_ctx.Pessoas.ToList());
 
-    //GET: api/produto/buscar/{bolacha}
+    //GET: api/pessoa/buscar/{nome}
     [HttpGet]
     [Route("buscar/{nome}")]
     public IActionResult Buscar([FromRoute] string nome)
     {
         // AppDataContext context = new AppDataContext();
         // context.
-        foreach (Pessoa produtoCadastrado in _ctx.Pessoas.ToList())
+        foreach (Pessoa pessoaCadastrado in _ctx.Pessoas.ToList())
         {
-            if (produtoCadastrado.Nome == nome)
+            if (pessoaCadastrado.Nome == nome)
             {
-                return Ok(produtoCadastrado);
+                return Ok(pessoaCadastrado);
             }
         }
         return NotFound();
     }
 
-    //POST: api/produto/cadastrar
+    //POST: api/pessoa/cadastrar
     [HttpPost]
     [Route("cadastrar")]
-    public IActionResult Cadastrar([FromBody] Pessoa produto)
+    public IActionResult Cadastrar([FromBody] Pessoa pessoa)
     {
-        _ctx.Pessoas.Add(produto);
+        _ctx.Pessoas.Add(pessoa);
         _ctx.SaveChanges();
-        return Created("", produto);
+        return Created("", pessoa);
     }
 
     [HttpDelete]
@@ -58,14 +58,14 @@ public class PessoaController : ControllerBase
     public IActionResult Deletar([FromRoute] int id)
     {
         //Utilizar o FirstOrDefault com a Expressão lambda
-        Pessoa produto = _ctx.Pessoas.Find(id);
-        if (produto == null)
+        Pessoa pessoa = _ctx.Pessoas.Find(id);
+        if (pessoa == null)
         {
             return NotFound();
         }
-        _ctx.Pessoas.Remove(produto);
+        _ctx.Pessoas.Remove(pessoa);
         _ctx.SaveChanges();
-        return Ok(produto);
+        return Ok(pessoa);
     }
 
     // Função para autenticar uma pessoa (simplificada)
@@ -86,6 +86,7 @@ public class PessoaController : ControllerBase
     // Função para adotar um animal por uma pessoa
     [HttpPost]
     [Route("adotarAnimal")]
+
     public IActionResult AdotarAnimal([FromBody] Animal animal)
     {
         // Implemente sua lógica de adoção de animal aqui
@@ -93,13 +94,13 @@ public class PessoaController : ControllerBase
         // Certifique-se de que a classe Pessoa tenha uma propriedade para armazenar os animais adotados
         // Esta é apenas uma implementação simplificada para ilustrar o conceito
 
-        Pessoa pessoa = _ctx.Pessoas.FirstOrDefault(p => p.PessoaId == animal.PessoaId);
-        if (pessoa != null)
-        {
-            pessoa.AdotarAnimal(animal);
-            _ctx.SaveChanges();
-            return Ok();
-        }
+        // Pessoa pessoa = _ctx.Pessoas.FirstOrDefault(p => p.PessoaId == animal.PessoaId);
+        // if (pessoa != null)
+        // {
+        //     pessoa.AdotarAnimal(animal);
+        //     _ctx.SaveChanges();
+        //     return Ok();
+        // }
         return NotFound(); // Pessoa não encontrada
     }
 
@@ -112,13 +113,13 @@ public class PessoaController : ControllerBase
         // Por exemplo, você pode adicionar o animal à lista de animais cadastrados pela pessoa
         // Certifique-se de que a classe Pessoa tenha uma propriedade para armazenar os animais cadastrados
         // Esta é apenas uma implementação simplificada para ilustrar o conceito
-        Pessoa pessoa = _ctx.Pessoas.FirstOrDefault(p => p.PessoaId == animal.PessoaId);
-        if (pessoa != null)
-        {
-            pessoa.CadastrarAnimal(animal);
-            _ctx.SaveChanges();
-            return Created("", animal);
-        }
+        // Pessoa pessoa = _ctx.Pessoas.FirstOrDefault(p => p.PessoaId == animal.PessoaId);
+        // if (pessoa != null)
+        // {
+        //     pessoa.CadastrarAnimal(animal);
+        //     _ctx.SaveChanges();
+        //     return Created("", animal);
+        // }
         return NotFound(); // Pessoa não encontrada
     }
 }
