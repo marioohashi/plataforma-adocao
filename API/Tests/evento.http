@@ -1,14 +1,16 @@
-### Listar de eventos
+### Listar de Eventos
 GET https://localhost:7195/api/evento/listar
 
-### Buscar eventos
-GET https://localhost:7195/api/evento/buscar/NomeEvento
+### Buscar Eventos
+GET https://localhost:7195/api/evento/buscar/Evento1
 
 ### Cadastrar evento
 POST https://localhost:7195/api/evento/cadastrar
 Content-Type: application/json
 
 {
-    "nome" : "Sophia", 
-    //adicionar
+    "Nome" : "EventX",
+    "Descricao" : "Descricao do evento",
+    "DataEvento" : "2023-11-04T22:02:25.551423",
+    "ONGId" : 2
 }

@@ -1,6 +1,8 @@
 ﻿using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace API;
 
@@ -16,31 +18,41 @@ public class EventoController : ControllerBase
     }
     private static List<Evento> eventos = new List<Evento>();
 
-    //GET: api/evento/listar
     [HttpGet]
     [Route("listar")]
     public IActionResult Listar()
     {
-        List<Evento> eventos = _ctx.Eventos.ToList();
-        return eventos.Count == 0 ? NotFound() : Ok(eventos);
+        try
+        {
+            List<Evento> eventos = _ctx.Eventos.Include(x => x.ONG).ToList();
+            return eventos.Count == 0 ? NotFound() : Ok(eventos);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
-    //_ctx.Eventos.ToList().Count == 0 ? NotFound() : Ok(_ctx.Eventos.ToList());
 
-    //GET: api/evento/buscar/{bolacha}
     [HttpGet]
     [Route("buscar/{nome}")]
     public IActionResult Buscar([FromRoute] string nome)
     {
-        // AppDataContext context = new AppDataContext();
-        // context.
-        foreach (Evento eventoCadastrado in _ctx.Eventos.ToList())
+        try
         {
-            if (eventoCadastrado.Nome == nome)
+            Evento? eventoCadastrado =
+                _ctx.Eventos
+                .Include(x => x.ONG)
+                .FirstOrDefault(x => x.Nome == nome);
+            if (eventoCadastrado != null)
             {
                 return Ok(eventoCadastrado);
             }
+            return NotFound();
         }
-        return NotFound();
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     //POST: api/evento/cadastrar
@@ -48,24 +60,44 @@ public class EventoController : ControllerBase
     [Route("cadastrar")]
     public IActionResult Cadastrar([FromBody] Evento evento)
     {
-        _ctx.Eventos.Add(evento);
-        _ctx.SaveChanges();
-        return Created("", evento);
+        try
+        {
+            ONG? ong =
+                _ctx.ONGs.Find(evento.ONGId);
+            if (ong == null)
+            {
+                return NotFound();
+            }
+            evento.ONG = ong;
+            _ctx.Eventos.Add(evento);
+            _ctx.SaveChanges();
+            return Created("", evento);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
+
 
     [HttpDelete]
     [Route("deletar/{id}")]
     public IActionResult Deletar([FromRoute] int id)
     {
-        //Utilizar o FirstOrDefault com a Expressão lambda
-        Evento evento = _ctx.Eventos.Find(id);
-        if (evento == null)
+        try
         {
+            Evento? eventoCadastrado = _ctx.Eventos.Find(id);
+            if (eventoCadastrado != null)
+            {
+                _ctx.Eventos.Remove(eventoCadastrado);
+                _ctx.SaveChanges();
+                return Ok();
+            }
             return NotFound();
         }
-        _ctx.Eventos.Remove(evento);
-        _ctx.SaveChanges();
-        return Ok(evento);
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
-
 }

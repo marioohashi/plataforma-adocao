@@ -2,16 +2,37 @@
 GET https://localhost:7195/api/animal/listar
 
 ### Buscar Animais
-GET https://localhost:7195/api/animal/buscar/NomeAnimal
+GET https://localhost:7195/api/animal/buscar/EventX
 
-### Cadastrar animal
+### Cadastrar Animal
 POST https://localhost:7195/api/animal/cadastrar
 Content-Type: application/json
 
 {
-    "nome" : "Sophia", 
-    //adicionar
+    "Nome" : "asda",
+    "Idade": "1 ano e 6 meses",
+    "Especie": "teste",
+    "Raca": "teste",
+    "Porte": "teste",
+    "Comportamento": "teste",
+    "Descricao": "teste",
+    "Foto" : "url2",
+    "Video" : "url1",
+    "ONGId" : 2
 }
 
-### AdicionarFotos
-POST: api/animal/adicionarFotos/{id}
+### Atualizar Animal
+PUT https://localhost:7195/api/animal/atualizar/1
+Content-Type: application/json
+
+{
+    "Nome" : "Novo Nome",
+    "Idade": "2 anos",
+    "Especie": "Nova Especie",
+    "Raca": "Nova Raca",
+    "Porte": "Novo Porte",
+    "Comportamento": "Novo Comportamento",
+    "Descricao": "Nova Descricao",
+    "Foto" : "nova-url-da-foto",
+    "Video" : "nova-url-do-video",
+}

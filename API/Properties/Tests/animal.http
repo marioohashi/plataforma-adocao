@@ -1,0 +1,17 @@
+### Listar de Animais
+GET https://localhost:7195/api/animal/listar
+
+### Buscar Animais
+GET https://localhost:7195/api/animal/buscar/NomeAnimal
+
+### Cadastrar animal
+POST https://localhost:7195/api/animal/cadastrar
+Content-Type: application/json
+
+{
+    "nome" : "Sophia", 
+    //adicionar
+}
+
+### AdicionarFotos
+POST: api/animal/adicionarFotos/{id}

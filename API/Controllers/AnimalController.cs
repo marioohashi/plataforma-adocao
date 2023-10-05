@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API;
 
@@ -21,26 +22,41 @@ public class AnimalController : ControllerBase
     [Route("listar")]
     public IActionResult Listar()
     {
-        List<Animal> animais = _ctx.Animais.ToList();
-        return animais.Count == 0 ? NotFound() : Ok(animais);
+        try
+        {
+            List<Animal> animais =
+                _ctx.Animais
+                .Include(x => x.ONG)
+                .ToList();
+            return animais.Count == 0 ? NotFound() : Ok(animais);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
-    //_ctx.Animais.ToList().Count == 0 ? NotFound() : Ok(_ctx.Animais.ToList());
 
     //GET: api/animal/buscar/{bolacha}
     [HttpGet]
     [Route("buscar/{nome}")]
     public IActionResult Buscar([FromRoute] string nome)
     {
-        // AppDataContext context = new AppDataContext();
-        // context.
-        foreach (Animal animalCadastrado in _ctx.Animais.ToList())
+        try
         {
-            if (animalCadastrado.Nome == nome)
+            Animal? animalCadastrado =
+                _ctx.Animais
+                .Include(x => x.ONG)
+                .FirstOrDefault(x => x.Nome == nome);
+            if (animalCadastrado != null)
             {
                 return Ok(animalCadastrado);
             }
+            return NotFound();
         }
-        return NotFound();
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     //POST: api/animal/cadastrar
@@ -48,55 +64,81 @@ public class AnimalController : ControllerBase
     [Route("cadastrar")]
     public IActionResult Cadastrar([FromBody] Animal animal)
     {
-        _ctx.Animais.Add(animal);
-        _ctx.SaveChanges();
-        return Created("", animal);
+        try
+        {
+            ONG? ong =
+                _ctx.ONGs.Find(animal.ONGId);
+            if (ong == null)
+            {
+                return NotFound();
+            }
+            animal.ONG = ong;
+            _ctx.Animais.Add(animal);
+            _ctx.SaveChanges();
+            return Created("", animal);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpDelete]
     [Route("deletar/{id}")]
     public IActionResult Deletar([FromRoute] int id)
     {
-        //Utilizar o FirstOrDefault com a Expressão lambda
-        Animal animal = _ctx.Animais.Find(id);
-        if (animal == null)
+        try
         {
+            Animal? animalCadastrado = _ctx.Animais.Find(id);
+            if (animalCadastrado != null)
+            {
+                _ctx.Animais.Remove(animalCadastrado);
+                _ctx.SaveChanges();
+                return Ok();
+            }
             return NotFound();
         }
-        _ctx.Animais.Remove(animal);
-        _ctx.SaveChanges();
-        return Ok(animal);
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
-    [HttpPost]
-    [Route("adicionarVideos/{id}")]
-    public IActionResult AdicionarVideos([FromRoute] int id, [FromBody] List<string> videos)
+    //PUT: api/animal/atualizar/{id}
+    [HttpPut]
+    [Route("atualizar/{id}")]
+    public IActionResult Atualizar([FromRoute] int id, [FromBody] Animal animalAtualizado)
     {
-        Animal animal = _ctx.Animais.Find(id);
-        if (animal == null)
+        try
         {
-            return NotFound();
+            Animal animalExistente = _ctx.Animais.Find(id);
+            if (animalExistente == null)
+            {
+                return NotFound();
+            }
+
+            // Atualize as propriedades do animal existente com as do animal atualizado
+            animalExistente.Nome = animalAtualizado.Nome;
+            animalExistente.Idade = animalAtualizado.Idade;
+            animalExistente.Especie = animalAtualizado.Especie;
+            animalExistente.Raca = animalAtualizado.Raca;
+            animalExistente.Porte = animalAtualizado.Porte;
+            animalExistente.Comportamento = animalAtualizado.Comportamento;
+            animalExistente.Descricao = animalAtualizado.Descricao;
+            animalExistente.Foto = animalAtualizado.Foto;
+            animalExistente.Video = animalAtualizado.Video;
+            animalExistente.ONGId = animalAtualizado.ONGId;
+
+            // Salve as alterações no banco de dados
+            _ctx.SaveChanges();
+
+            return Ok(animalExistente);
         }
-
-        animal.Videos.AddRange(videos);
-        _ctx.SaveChanges();
-
-        return Ok(animal);
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
-    [HttpPost]
-    [Route("adicionarFotos/{id}")]
-    public IActionResult AdicionarFotos([FromRoute] int id, [FromBody] List<string> fotos)
-    {
-        Animal animal = _ctx.Animais.Find(id);
-        if (animal == null)
-        {
-            return NotFound();
-        }
-
-        animal.Fotos.AddRange(fotos);
-        _ctx.SaveChanges();
-
-        return Ok(animal);
-    }
 }

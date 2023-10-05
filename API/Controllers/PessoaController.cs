@@ -1,124 +1,97 @@
 ﻿using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace API;
-
-[ApiController]
-[Route("api/pessoa")]
-public class PessoaController : ControllerBase
+namespace API
 {
-    private readonly AppDataContext _ctx;
-
-    public PessoaController(AppDataContext ctx)
+    [ApiController]
+    [Route("api/pessoa")]
+    public class PessoaController : ControllerBase
     {
-        _ctx = ctx;
-    }
-    private static List<Pessoa> pessoas = new List<Pessoa>();
+        private readonly AppDataContext _ctx;
 
-    //GET: api/produto/listar
-    [HttpGet]
-    [Route("listar")]
-    public IActionResult Listar()
-    {
-        List<Pessoa> pessoas = _ctx.Pessoas.ToList();
-        return pessoas.Count == 0 ? NotFound() : Ok(pessoas);
-    }
-    //_ctx.Pessoas.ToList().Count == 0 ? NotFound() : Ok(_ctx.Pessoas.ToList());
-
-    //GET: api/produto/buscar/{bolacha}
-    [HttpGet]
-    [Route("buscar/{nome}")]
-    public IActionResult Buscar([FromRoute] string nome)
-    {
-        // AppDataContext context = new AppDataContext();
-        // context.
-        foreach (Pessoa produtoCadastrado in _ctx.Pessoas.ToList())
+        public PessoaController(AppDataContext ctx)
         {
-            if (produtoCadastrado.Nome == nome)
+            _ctx = ctx;
+        }
+
+        // GET: api/pessoa/listar
+        [HttpGet]
+        [Route("listar")]
+        public IActionResult Listar()
+        {
+            try
             {
-                return Ok(produtoCadastrado);
+                List<Pessoa> pessoas = _ctx.Pessoas.ToList();
+                return pessoas.Count == 0 ? NotFound() : Ok(pessoas);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
-        return NotFound();
-    }
 
-    //POST: api/produto/cadastrar
-    [HttpPost]
-    [Route("cadastrar")]
-    public IActionResult Cadastrar([FromBody] Pessoa produto)
-    {
-        _ctx.Pessoas.Add(produto);
-        _ctx.SaveChanges();
-        return Created("", produto);
-    }
-
-    [HttpDelete]
-    [Route("deletar/{id}")]
-    public IActionResult Deletar([FromRoute] int id)
-    {
-        //Utilizar o FirstOrDefault com a Expressão lambda
-        Pessoa produto = _ctx.Pessoas.Find(id);
-        if (produto == null)
+        // GET: api/pessoa/buscar/{nome}
+        [HttpGet]
+        [Route("buscar/{nome}")]
+        public IActionResult Buscar([FromRoute] string nome)
         {
-            return NotFound();
+            try
+            {
+                Pessoa? pessoaCadastrada = _ctx.Pessoas.FirstOrDefault(x => x.Nome == nome);
+                if (pessoaCadastrada != null)
+                {
+                    return Ok(pessoaCadastrada);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-        _ctx.Pessoas.Remove(produto);
-        _ctx.SaveChanges();
-        return Ok(produto);
-    }
 
-    // Função para autenticar uma pessoa (simplificada)
-    [HttpPost]
-    [Route("autenticar")]
-    public IActionResult Autenticar([FromBody] Pessoa pessoa)
-    {
-        // Implemente sua lógica de autenticação aqui
-        // Por exemplo, verifique se o email e senha correspondem a uma pessoa existente
-        // Esta é apenas uma implementação simplificada para ilustrar o conceito
-        if (_ctx.Pessoas.Any(p => p.Email == pessoa.Email && p.NumeroTelefone == pessoa.NumeroTelefone))
+        // POST: api/pessoa/cadastrar
+        [HttpPost]
+        [Route("cadastrar")]
+        public IActionResult Cadastrar([FromBody] Pessoa pessoa)
         {
-            return Ok(true); // Autenticado com sucesso
+            try
+            {
+                _ctx.Pessoas.Add(pessoa);
+                _ctx.SaveChanges();
+                return Created("", pessoa);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-        return Unauthorized(); // Falha na autenticação
-    }
 
-    // Função para adotar um animal por uma pessoa
-    [HttpPost]
-    [Route("adotarAnimal")]
-    public IActionResult AdotarAnimal([FromBody] Animal animal)
-    {
-        // Implemente sua lógica de adoção de animal aqui
-        // Por exemplo, você pode adicionar o animal à lista de animais adotados pela pessoa
-        // Certifique-se de que a classe Pessoa tenha uma propriedade para armazenar os animais adotados
-        // Esta é apenas uma implementação simplificada para ilustrar o conceito
-
-        Pessoa pessoa = _ctx.Pessoas.FirstOrDefault(p => p.PessoaId == animal.PessoaId);
-        if (pessoa != null)
+        // DELETE: api/pessoa/deletar/{id}
+        [HttpDelete]
+        [Route("deletar/{id}")]
+        public IActionResult Deletar([FromRoute] int id)
         {
-            pessoa.AdotarAnimal(animal);
-            _ctx.SaveChanges();
-            return Ok();
+            try
+            {
+                Pessoa? pessoaCadastrada = _ctx.Pessoas.Find(id);
+                if (pessoaCadastrada != null)
+                {
+                    _ctx.Pessoas.Remove(pessoaCadastrada);
+                    _ctx.SaveChanges();
+                    return Ok();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-        return NotFound(); // Pessoa não encontrada
-    }
-
-    // Função para cadastrar um animal por uma pessoa
-    [HttpPost]
-    [Route("cadastrarAnimal")]
-    public IActionResult CadastrarAnimal([FromBody] Animal animal)
-    {
-        // Implemente sua lógica de cadastro de animal aqui
-        // Por exemplo, você pode adicionar o animal à lista de animais cadastrados pela pessoa
-        // Certifique-se de que a classe Pessoa tenha uma propriedade para armazenar os animais cadastrados
-        // Esta é apenas uma implementação simplificada para ilustrar o conceito
-        Pessoa pessoa = _ctx.Pessoas.FirstOrDefault(p => p.PessoaId == animal.PessoaId);
-        if (pessoa != null)
-        {
-            pessoa.CadastrarAnimal(animal);
-            _ctx.SaveChanges();
-            return Created("", animal);
-        }
-        return NotFound(); // Pessoa não encontrada
     }
 }
