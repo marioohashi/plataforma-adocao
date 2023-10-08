@@ -19,11 +19,24 @@ Content-Type: application/json
     "Foto" : "url foto teste",
     "Video" : "video url teste",
     "ONGId" : 1
-    
 }
 
 ### Atualizar Animal
 PUT https://localhost:7195/api/animal/atualizar/1
+Content-Type: application/json
 
-### Delete ong
+{
+    "Nome" : "Cadastro Atualizado",
+    "Idade": "11 anos",
+    "Especie": "Especie teste atualizado",
+    "Raca": "Raca teste atualizado",
+    "Porte": "Porte teste atualizado",
+    "Comportamento": "Comportamento teste atualizado",
+    "Descricao": "Descricao teste atualizado",
+    "Foto" : "url foto teste atualizado",
+    "Video" : "video url teste atualizado",
+    "ONGId" : 1
+}
+
+### Delete animal
 DELETE https://localhost:7195/api/animal/delete/1

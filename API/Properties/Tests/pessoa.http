@@ -18,6 +18,15 @@ Content-Type: application/json
 
 ### Atualizar Pessoa 
 PUT https://localhost:7195/api/pessoa/atualizar/1
+Content-Type: application/json
+
+{
+    "nome" : "Pessoa teste atualizado",
+    "endereco": "Rua teste atualizado",
+    "numeroTelefone": "(41)0000-0000 atualizado",
+    "email": "pessoa@email.com atualizado"
+    
+}
 
 ### Delete Pessoa
 DELETE https://localhost:7195/api/pessoa/delete/1

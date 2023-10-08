@@ -17,6 +17,14 @@ Content-Type: application/json
 
 ### Atualizar ONG
 PUT https://localhost:7195/api/ong/atualizar/1
+Content-Type: application/json
+
+{
+    "nome" : "Ong Teste atualizado",
+    "missao": "Missao teste atualizado",
+    "historico": "Historico teste atualizado",
+    "informacoesContato": "Contato teste atualizado"
+}
 
 ### Delete ong
 DELETE https://localhost:7195/api/ong/delete/1

@@ -17,6 +17,14 @@ Content-Type: application/json
 
 ### Atualizar evento
 PUT https://localhost:7195/api/evento/atualizar/1
+Content-Type: application/json
 
-### Delete ong
+{
+    "Nome" : "Evento teste atualizado",
+    "Descricao" : "Descricao do evento teste atualizado",
+    "DataEvento" : "2023-11-04T22:02:25.551423",
+    "ONGId" : 1
+}
+
+### Delete evento
 DELETE https://localhost:7195/api/evento/delete/1
