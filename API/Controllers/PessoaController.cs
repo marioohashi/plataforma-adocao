@@ -72,26 +72,60 @@ namespace API
             }
         }
 
-        // DELETE: api/pessoa/deletar/{id}
-        [HttpDelete]
-        [Route("deletar/{id}")]
-        public IActionResult Deletar([FromRoute] int id)
+        [HttpPut]
+        [Route("atualizar/{id}")]
+        public IActionResult AtualizarPessoa([FromRoute] int id, [FromBody] Pessoa pessoaAtualizada)
         {
             try
             {
-                Pessoa? pessoaCadastrada = _ctx.Pessoas.Find(id);
-                if (pessoaCadastrada != null)
+                Pessoa pessoaExistente = _ctx.Pessoas.Find(id);
+                if (pessoaExistente == null)
                 {
-                    _ctx.Pessoas.Remove(pessoaCadastrada);
-                    _ctx.SaveChanges();
-                    return Ok();
+                    return NotFound();
                 }
-                return NotFound();
+
+                // Atualize as propriedades da Pessoa existente com as da Pessoa atualizada
+                pessoaExistente.Nome = pessoaAtualizada.Nome;
+                pessoaExistente.Endereco = pessoaAtualizada.Endereco;
+                pessoaExistente.NumeroTelefone = pessoaAtualizada.NumeroTelefone;
+                pessoaExistente.Email = pessoaAtualizada.Email;
+                // Adicione aqui outras propriedades que precisam ser atualizadas
+
+                // Salve as alterações no banco de dados
+                _ctx.SaveChanges();
+
+                return Ok(pessoaExistente);
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
         }
+
+
+        // DELETE: api/pessoa/deletar/{id}
+        [HttpDelete]
+        [Route("deletar/{id}")]
+        public IActionResult DeletarPessoa([FromRoute] int id)
+        {
+            try
+            {
+                Pessoa pessoa = _ctx.Pessoas.Find(id);
+                if (pessoa == null)
+                {
+                    return NotFound();
+                }
+
+                _ctx.Pessoas.Remove(pessoa);
+                _ctx.SaveChanges();
+
+                return Ok(pessoa);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }
