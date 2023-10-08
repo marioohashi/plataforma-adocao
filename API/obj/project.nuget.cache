@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "1pdLizzhaePBSQFck6py+ZDSPy26Ui/BGw2ppTfWQ1SMfVq9AYyGTBaQUmxgEkuc6qI1IpIcfPaN4Mdh2eDlKw==",
   "success": true,
   "projectFilePath": "/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/API.csproj",
-=======
-  "dgSpecHash": "C6itf+psq1479OXJprn2jiWNF8EZDdqD/MS2CJvoFCDflQY2s2L+jrmi5GBr1hhOb06TlcAl0sYhOtMJvLMYnQ==",
-  "success": true,
-  "projectFilePath": "/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/API.csproj",
->>>>>>> origin/main
   "expectedPackageFiles": [
     "/Users/sophia/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/sophia/.nuget/packages/microsoft.data.sqlite.core/6.0.21/microsoft.data.sqlite.core.6.0.21.nupkg.sha512",
@@ -47,5 +41,12 @@
     "/Users/sophia/.nuget/packages/system.text.encodings.web/6.0.0/system.text.encodings.web.6.0.0.nupkg.sha512",
     "/Users/sophia/.nuget/packages/system.text.json/6.0.0/system.text.json.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
