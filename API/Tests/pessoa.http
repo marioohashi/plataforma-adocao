@@ -2,7 +2,7 @@
 GET https://localhost:7195/api/pessoa/listar
 
 ### Buscar Pessoas
-GET https://localhost:7195/api/pessoa/buscar/Joacir
+GET https://localhost:7195/api/pessoa/buscar/Pessoa teste
 
 ### Cadastrar Pessoa
 POST https://localhost:7195/api/pessoa/cadastrar
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Atualizar Pessoa 
-PUT https://localhost:7195/api/pessoa/atualizar/1
+PUT https://localhost:7195/api/pessoa/atualizar/3
 Content-Type: application/json
 
 {
@@ -29,4 +29,8 @@ Content-Type: application/json
 }
 
 ### Delete Pessoa
-DELETE https://localhost:7195/api/pessoa/delete/1
+DELETE https://localhost:7195/api/pessoa/delete/2
+
+### Adotar Animal
+//{pessoaId}/adotaranimal/{animalId}
+POST https://localhost:7195/api/pessoa/4/AdotarAnimal/1

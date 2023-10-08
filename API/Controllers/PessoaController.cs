@@ -129,5 +129,35 @@ namespace API
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost("{pessoaId}/adotarAnimal/{animalId}")]
+        public async Task<IActionResult> AdotarAnimal(int pessoaId, int animalId)
+        {
+            Pessoa pessoa = _ctx.Pessoas.Find(pessoaId);
+            if (pessoa == null)
+            {
+                return NotFound("Pessoa não encontrada.");
+            }
+
+            Animal animal = _ctx.Animais.Find(animalId);
+            if (animal == null)
+            {
+                return NotFound("Animal não encontrado.");
+            }
+
+            pessoa.AnimalId = animalId;
+
+            try
+            {
+                await _ctx.SaveChangesAsync();
+                return Ok("Animal adotado com sucesso!");
+            }
+            catch (DbUpdateException)
+            {
+                // Lidar com erros de atualização do banco de dados, se necessário.
+                return StatusCode(500, "Ocorreu um erro ao adotar o animal.");
+            }
+        }
+
     }
 }
