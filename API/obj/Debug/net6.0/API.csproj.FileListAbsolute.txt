@@ -269,6 +269,8 @@
 /Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.pdb
 /Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.genruntimeconfig.cache
 /Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/ref/API.dll
+<<<<<<< HEAD
+=======
 =======
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.dll
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/refint/API.dll
@@ -276,3 +278,4 @@
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.genruntimeconfig.cache
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/ref/API.dll
 >>>>>>> origin/main
+>>>>>>> main

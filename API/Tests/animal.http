@@ -3,6 +3,7 @@ GET https://localhost:7195/api/animal/listar
 
 ### Buscar Animais
 <<<<<<< HEAD
+<<<<<<< HEAD
 GET https://localhost:7195/api/animal/buscar/Novo Nome
 =======
 <<<<<<< HEAD
@@ -11,13 +12,15 @@ GET https://localhost:7195/api/animal/buscar/EventX
 GET https://localhost:7195/api/animal/buscar/Ximbinha
 >>>>>>> origin/main
 >>>>>>> main
+=======
+GET https://localhost:7195/api/animal/buscar/EventX
+>>>>>>> origin/main
 
 ### Cadastrar Animal
 POST https://localhost:7195/api/animal/cadastrar
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
     "Nome" : "asda",
     "Idade": "1 ano e 6 meses",
     "Especie": "teste",
@@ -60,6 +63,7 @@ Content-Type: application/json
     "Descricao": "Nova Descricao",
     "Foto" : "nova-url-da-foto",
     "Video" : "nova-url-do-video",
+<<<<<<< HEAD
 =======
     "Nome": "Ximbinha",
     "Idade": "2 anos e 6 meses",
@@ -70,4 +74,6 @@ Content-Type: application/json
     "Descricao": "Encontrei no lixo e não aguento mais essa besta selvagem"
 >>>>>>> origin/main
 >>>>>>> main
+=======
+>>>>>>> origin/main
 }

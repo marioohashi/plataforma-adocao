@@ -27,6 +27,9 @@ namespace API
                 return BadRequest(e.Message);
             }
         }
+        //GET: api/ong/listar
+        [HttpGet]
+        [Route("listar")]
 
         //GET: api/ong/buscar/{bolacha}
         [HttpGet]
