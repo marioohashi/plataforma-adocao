@@ -94,4 +94,36 @@ public class ONGController : ControllerBase
             return BadRequest(e.Message);
         }
     }
+
+    //PUT: api/ong/atualizar/{id}
+    [HttpPut]
+    [Route("atualizar/{id}")]
+    public IActionResult Atualizar([FromRoute] int id, [FromBody] ONG ongAtualizado)
+    {
+        try
+        {
+            ONG? ongExistente = _ctx.ONGs.Find(id);
+
+            if (ongExistente == null)
+            {
+                return NotFound();
+            }
+
+            ongExistente.Nome = ongAtualizado.Nome;
+            ongExistente.Missao = ongAtualizado.Missao;
+            ongExistente.Historico = ongAtualizado.Historico;
+            ongExistente.InformacoesContato = ongAtualizado.InformacoesContato;
+
+            // Salve as alterações no banco de dados
+            _ctx.SaveChanges();
+
+            return Ok(ongExistente);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+
 }

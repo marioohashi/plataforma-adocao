@@ -2,7 +2,7 @@
 GET https://localhost:7195/api/animal/listar
 
 ### Buscar Animais
-GET https://localhost:7195/api/animal/buscar/EventX
+GET https://localhost:7195/api/animal/buscar/Novo Nome
 
 ### Cadastrar Animal
 POST https://localhost:7195/api/animal/cadastrar
@@ -21,18 +21,23 @@ Content-Type: application/json
     "ONGId" : 2
 }
 
+### Deletar Animal
+DELETE https://localhost:7195/api/animal/deletar/3
+
 ### Atualizar Animal
-PUT https://localhost:7195/api/animal/atualizar/1
+PUT https://localhost:7195/api/animal/atualizar/4
 Content-Type: application/json
 
 {
-    "Nome" : "Novo Nome",
-    "Idade": "2 anos",
-    "Especie": "Nova Especie",
-    "Raca": "Nova Raca",
-    "Porte": "Novo Porte",
-    "Comportamento": "Novo Comportamento",
-    "Descricao": "Nova Descricao",
-    "Foto" : "nova-url-da-foto",
-    "Video" : "nova-url-do-video",
+    "Nome" : "Novo Nome UPDATE",
+    "Idade" : "2 anos UPDATE",
+    "Especie" : "Nova Especie UPDATE",
+    "Raca" : "Nova Raca UPDATE",
+    "Porte" : "Novo Porte UPDATE",
+    "Comportamento" : "Novo Comportamento UPDATE",
+    "Descricao" : "Nova Descricao UPDATE",
+    "Foto" : "nova-url-da-foto UPDATE",
+    "Video" : "nova-url-do-video UPDATE",
+    "ONGId" : 4
+
 }

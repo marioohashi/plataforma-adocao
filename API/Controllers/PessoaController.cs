@@ -93,5 +93,35 @@ namespace API
                 return BadRequest(e.Message);
             }
         }
+
+        //PUT: api/pessoa/atualizar/{id}
+        [HttpPut]
+        [Route("atualizar/{id}")]
+        public IActionResult Atualizar([FromRoute] int id, [FromBody] Pessoa pessoaAtualizado)
+        {
+            try
+            {
+                Pessoa? pessoaExistente = _ctx.Pessoas.Find(id);
+
+                if (pessoaExistente == null)
+                {
+                    return NotFound();
+                }
+
+                pessoaExistente.Nome = pessoaAtualizado.Nome;
+                pessoaExistente.Endereco = pessoaAtualizado.Endereco;
+                pessoaExistente.NumeroTelefone = pessoaAtualizado.NumeroTelefone;
+                pessoaExistente.Email = pessoaAtualizado.Email;
+
+                // Salve as alterações no banco de dados
+                _ctx.SaveChanges();
+
+                return Ok(pessoaExistente);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

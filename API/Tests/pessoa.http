@@ -14,3 +14,18 @@ Content-Type: application/json
     "numeroTelefone": "(41)999273910",
     "email": "joacir@gmail.com"
 }
+
+
+### Deletar Pessoa
+DELETE https://localhost:7195/api/pessoa/deletar/4
+
+### Atualizar Pessoa
+PUT https://localhost:7195/api/pessoa/atualizar/2
+Content-Type: application/json
+
+{
+    "Nome" : "Nome 2 + Atualizado",
+    "Endereco": "Endereço 2 + Atualizado",
+    "NumeroTelefone": "Numero Telefone 2 + Atualizado",
+    "Email": "Numero Telefone 2 + Atualizado"
+}
