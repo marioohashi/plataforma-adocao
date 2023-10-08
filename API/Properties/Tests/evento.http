@@ -1,26 +1,22 @@
-### Listar de eventos
+### Listar de Eventos
 GET https://localhost:7195/api/evento/listar
 
-### Buscar eventos
-GET https://localhost:7195/api/evento/buscar/NomeEvento
-
-### Atualizar eventos
-PUT https://localhost:7195/api/evento/atualizar/1
-Content-Type: application/json
-
-{
-<<<<<<< HEAD
-    "Nome": "Evento Teste Atualizado",
-    "Descricao": "Descricao teste",
-    "ONGId": 1
-}
+### Buscar Eventos
+GET https://localhost:7195/api/evento/buscar/Evento1
 
 ### Cadastrar evento
 POST https://localhost:7195/api/evento/cadastrar
-=======
-    "Nome": "Evento Test",
-    "Descricao": "Evento de doacao teste",
-    "ONGId": "1"  
-    //adicionar
+Content-Type: application/json
+
+{
+    "Nome" : "Evento teste",
+    "Descricao" : "Descricao do evento teste",
+    "DataEvento" : "2023-11-04T22:02:25.551423",
+    "ONGId" : 1
 }
->>>>>>> main
+
+### Atualizar evento
+PUT https://localhost:7195/api/evento/atualizar/1
+
+### Delete ong
+DELETE https://localhost:7195/api/evento/delete/1
