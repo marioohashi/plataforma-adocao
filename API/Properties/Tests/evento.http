@@ -4,11 +4,23 @@ GET https://localhost:7195/api/evento/listar
 ### Buscar eventos
 GET https://localhost:7195/api/evento/buscar/NomeEvento
 
-### Cadastrar evento
-POST https://localhost:7195/api/evento/cadastrar
+### Atualizar eventos
+PUT https://localhost:7195/api/evento/atualizar/1
 Content-Type: application/json
 
 {
-    "nome" : "Sophia", 
+<<<<<<< HEAD
+    "Nome": "Evento Teste Atualizado",
+    "Descricao": "Descricao teste",
+    "ONGId": 1
+}
+
+### Cadastrar evento
+POST https://localhost:7195/api/evento/cadastrar
+=======
+    "Nome": "Evento Test",
+    "Descricao": "Evento de doacao teste",
+    "ONGId": "1"  
     //adicionar
 }
+>>>>>>> main

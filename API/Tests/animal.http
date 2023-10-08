@@ -2,7 +2,19 @@
 GET https://localhost:7195/api/animal/listar
 
 ### Buscar Animais
+<<<<<<< HEAD
+<<<<<<< HEAD
+GET https://localhost:7195/api/animal/buscar/Novo Nome
+=======
+<<<<<<< HEAD
 GET https://localhost:7195/api/animal/buscar/EventX
+=======
+GET https://localhost:7195/api/animal/buscar/Ximbinha
+>>>>>>> origin/main
+>>>>>>> main
+=======
+GET https://localhost:7195/api/animal/buscar/EventX
+>>>>>>> origin/main
 
 ### Cadastrar Animal
 POST https://localhost:7195/api/animal/cadastrar
@@ -22,7 +34,11 @@ Content-Type: application/json
     
 }
 
+### Deletar Animal
+DELETE https://localhost:7195/api/animal/deletar/3
+
 ### Atualizar Animal
+<<<<<<< HEAD
 PUT https://localhost:7195/api/animal/atualizar/1
 
 
@@ -31,3 +47,45 @@ PUT https://localhost:7195/api/animal/atualizar/1
 ### Delete ong
 DELETE https://localhost:7195/api/animal/delete/2
 Content-Type: application/json
+=======
+PUT https://localhost:7195/api/animal/atualizar/4
+Content-Type: application/json
+
+{
+<<<<<<< HEAD
+    "Nome" : "Novo Nome UPDATE",
+    "Idade" : "2 anos UPDATE",
+    "Especie" : "Nova Especie UPDATE",
+    "Raca" : "Nova Raca UPDATE",
+    "Porte" : "Novo Porte UPDATE",
+    "Comportamento" : "Novo Comportamento UPDATE",
+    "Descricao" : "Nova Descricao UPDATE",
+    "Foto" : "nova-url-da-foto UPDATE",
+    "Video" : "nova-url-do-video UPDATE",
+    "ONGId" : 4
+
+=======
+    "Nome" : "Novo Nome",
+    "Idade": "2 anos",
+    "Especie": "Nova Especie",
+    "Raca": "Nova Raca",
+    "Porte": "Novo Porte",
+    "Comportamento": "Novo Comportamento",
+    "Descricao": "Nova Descricao",
+    "Foto" : "nova-url-da-foto",
+    "Video" : "nova-url-do-video",
+<<<<<<< HEAD
+=======
+    "Nome": "Ximbinha",
+    "Idade": "2 anos e 6 meses",
+    "Especie": "Cachorro",
+    "Raca": "SRD",
+    "Porte": "Pequeno",
+    "Comportamento": "Besta selvagem",
+    "Descricao": "Encontrei no lixo e não aguento mais essa besta selvagem"
+>>>>>>> origin/main
+>>>>>>> main
+=======
+>>>>>>> origin/main
+}
+>>>>>>> main
