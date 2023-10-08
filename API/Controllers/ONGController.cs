@@ -74,8 +74,45 @@ public class ONGController : ControllerBase
         }
     }
 
+    // PUT: api/ong/atualizar/{id}
+    [HttpPut]
+    [Route("atualizar/{id}")]
+    public IActionResult Atualizar([FromRoute] int id, [FromBody] ONG ongAtualizada)
+    {
+        try
+        {
+            ONG ongExistente = _ctx.ONGs.Find(id);
+
+            if (ongExistente == null)
+            {
+                return NotFound();
+            }
+
+            // Atualizar as propriedades da ongExistente com os valores da ongAtualizada
+
+            ongExistente.Nome = ongAtualizada.Nome;
+            ongExistente.Missao = ongAtualizada.Missao;
+            ongExistente.Historico = ongAtualizada.Historico;
+            ongExistente.InformacoesContato = ongAtualizada.InformacoesContato;
+
+
+            // Adicione outras propriedades que deseja atualizar
+
+            _ctx.SaveChanges();
+
+            return Ok(ongExistente);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+
+
+
     [HttpDelete]
-    [Route("deletar/{id}")]
+    [Route("delete/{id}")]
     public IActionResult Deletar([FromRoute] int id)
     {
         try

@@ -72,21 +72,57 @@ namespace API
             }
         }
 
-        // DELETE: api/pessoa/deletar/{id}
-        [HttpDelete]
-        [Route("deletar/{id}")]
-        public IActionResult Deletar([FromRoute] int id)
+        // PUT: api/pessoa/atualizar/{id}
+        [HttpPut]
+        [Route("atualizar/{id}")]
+        public IActionResult Atualizar([FromRoute] int id, [FromBody] Pessoa pessoaAtualizada)
         {
             try
             {
-                Pessoa? pessoaCadastrada = _ctx.Pessoas.Find(id);
-                if (pessoaCadastrada != null)
+                Pessoa pessoaExistente = _ctx.Pessoas.Find(id);
+
+                if (pessoaExistente == null)
                 {
-                    _ctx.Pessoas.Remove(pessoaCadastrada);
-                    _ctx.SaveChanges();
-                    return Ok();
+                    return NotFound();
                 }
-                return NotFound();
+
+                // Atualizar as propriedades da pessoaExistente com os valores da pessoaAtualizada
+
+                pessoaExistente.Nome = pessoaAtualizada.Nome;
+                pessoaExistente.Endereco = pessoaAtualizada.Endereco;
+                pessoaExistente.NumeroTelefone = pessoaAtualizada.NumeroTelefone;
+                pessoaExistente.Email = pessoaAtualizada.Email;
+
+
+                // Adicione outras propriedades que você deseja atualizar
+
+                _ctx.SaveChanges();
+
+                return Ok(pessoaExistente);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        // DELETE: api/pessoa/deletar/{id}
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public IActionResult DeletarPessoa([FromRoute] int id)
+        {
+            try
+            {
+                Pessoa pessoa = _ctx.Pessoas.Find(id);
+                if (pessoa == null)
+                {
+                    return NotFound();
+                }
+
+                _ctx.Pessoas.Remove(pessoa);
+                _ctx.SaveChanges();
+
+                return Ok(pessoa);
             }
             catch (Exception e)
             {

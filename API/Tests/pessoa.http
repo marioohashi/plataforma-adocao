@@ -13,4 +13,20 @@ Content-Type: application/json
     "endereco": "Rua Oliveira Viana 3306",
     "numeroTelefone": "(41)999273910",
     "email": "joacir@gmail.com"
+    
 }
+
+### Atualizar Pessoa 
+PUT https://localhost:7195/api/pessoa/atualizar/1
+Content-Type: application/json
+
+{
+    "Nome": "Lele",
+    "Endereco": "São Paulo 3306",
+    "NumeroTelefone": "(41)999273910",
+    "Email": "lele@gmail.com"
+}
+
+### Delete Pessoa
+DELETE https://localhost:7195/api/pessoa/delete/1
+

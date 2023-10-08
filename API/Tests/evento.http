@@ -14,3 +14,19 @@ Content-Type: application/json
     "DataEvento" : "2023-11-04T22:02:25.551423",
     "ONGId" : 2
 }
+
+### Atualizar evento
+PUT https://localhost:7195/api/evento/atualizar/2
+Content-Type: application/json
+
+{
+    "Nome" : "evento2",
+    "Descricao" : "Descricao do evento",
+    "DataEvento" : "2023-11-04T22:02:25.551423",
+    "ONGId" : 2
+
+}
+
+### Delete ong
+DELETE https://localhost:7195/api/evento/delete/1
+Content-Type: application/json

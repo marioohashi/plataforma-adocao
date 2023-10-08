@@ -84,27 +84,6 @@ public class AnimalController : ControllerBase
         }
     }
 
-    [HttpDelete]
-    [Route("deletar/{id}")]
-    public IActionResult Deletar([FromRoute] int id)
-    {
-        try
-        {
-            Animal? animalCadastrado = _ctx.Animais.Find(id);
-            if (animalCadastrado != null)
-            {
-                _ctx.Animais.Remove(animalCadastrado);
-                _ctx.SaveChanges();
-                return Ok();
-            }
-            return NotFound();
-        }
-        catch (Exception e)
-        {
-            return BadRequest(e.Message);
-        }
-    }
-
     //PUT: api/animal/atualizar/{id}
     [HttpPut]
     [Route("atualizar/{id}")]
@@ -141,4 +120,29 @@ public class AnimalController : ControllerBase
         }
     }
 
+    [HttpDelete]
+    [Route("delete/{id}")]
+    public IActionResult Deletar([FromRoute] int id)
+    {
+        try
+        {
+            Animal? animalCadastrado = _ctx.Animais.Find(id);
+            if (animalCadastrado != null)
+            {
+                _ctx.Animais.Remove(animalCadastrado);
+                _ctx.SaveChanges();
+                return Ok();
+            }
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+}
+
+internal class HttpUpdateAttribute : Attribute
+{
 }
