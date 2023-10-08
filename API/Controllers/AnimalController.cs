@@ -86,24 +86,27 @@ public class AnimalController : ControllerBase
 
     [HttpDelete]
     [Route("deletar/{id}")]
-    public IActionResult Deletar([FromRoute] int id)
+    public IActionResult DeletarAnimal([FromRoute] int id)
     {
         try
         {
-            Animal? animalCadastrado = _ctx.Animais.Find(id);
-            if (animalCadastrado != null)
+            Animal animal = _ctx.Animais.Find(id);
+            if (animal == null)
             {
-                _ctx.Animais.Remove(animalCadastrado);
-                _ctx.SaveChanges();
-                return Ok();
+                return NotFound();
             }
-            return NotFound();
+
+            _ctx.Animais.Remove(animal);
+            _ctx.SaveChanges();
+
+            return Ok(animal);
         }
         catch (Exception e)
         {
             return BadRequest(e.Message);
         }
     }
+
 
     //PUT: api/animal/atualizar/{id}
     [HttpPut]

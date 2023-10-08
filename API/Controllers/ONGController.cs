@@ -108,7 +108,7 @@ public class ONGController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("deletar/{id}")]
+    [Route("delete/{id}")]
     public IActionResult Deletar([FromRoute] int id)
     {
         try
@@ -127,4 +127,5 @@ public class ONGController : ControllerBase
             return BadRequest(e.Message);
         }
     }
+
 }
