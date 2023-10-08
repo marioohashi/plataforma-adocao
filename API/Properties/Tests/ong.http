@@ -9,5 +9,9 @@ POST https://localhost:7195/api/ong/cadastrar
 Content-Type: application/json
 
 {
-    "nome" : "Sophia"
+    "Nome": "Ong Teste",
+    "Missao": "Missao teste",
+    "Historico": "Historico teste",
+    "InformacoesContato": "Contato teste"
+
 }
