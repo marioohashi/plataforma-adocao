@@ -2,13 +2,45 @@
 GET https://localhost:7195/api/animal/listar
 
 ### Buscar Animais
+<<<<<<< HEAD
+GET https://localhost:7195/api/animal/buscar/EventX
+=======
 GET https://localhost:7195/api/animal/buscar/Ximbinha
+>>>>>>> origin/main
 
-### Cadastrar animal
+### Cadastrar Animal
 POST https://localhost:7195/api/animal/cadastrar
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
+    "Nome" : "asda",
+    "Idade": "1 ano e 6 meses",
+    "Especie": "teste",
+    "Raca": "teste",
+    "Porte": "teste",
+    "Comportamento": "teste",
+    "Descricao": "teste",
+    "Foto" : "url2",
+    "Video" : "url1",
+    "ONGId" : 2
+}
+
+### Atualizar Animal
+PUT https://localhost:7195/api/animal/atualizar/1
+Content-Type: application/json
+
+{
+    "Nome" : "Novo Nome",
+    "Idade": "2 anos",
+    "Especie": "Nova Especie",
+    "Raca": "Nova Raca",
+    "Porte": "Novo Porte",
+    "Comportamento": "Novo Comportamento",
+    "Descricao": "Nova Descricao",
+    "Foto" : "nova-url-da-foto",
+    "Video" : "nova-url-do-video",
+=======
     "Nome": "Ximbinha",
     "Idade": "2 anos e 6 meses",
     "Especie": "Cachorro",
@@ -16,4 +48,5 @@ Content-Type: application/json
     "Porte": "Pequeno",
     "Comportamento": "Besta selvagem",
     "Descricao": "Encontrei no lixo e não aguento mais essa besta selvagem"
+>>>>>>> origin/main
 }
