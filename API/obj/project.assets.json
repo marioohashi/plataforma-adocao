@@ -1479,25 +1479,24 @@
     ]
   },
   "packageFolders": {
-    "/Users/marioohashi/.nuget/packages/": {}
+    "/Users/sophia/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/API.csproj",
+      "projectUniqueName": "/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/API.csproj",
       "projectName": "API",
-      "projectPath": "/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/API.csproj",
-      "packagesPath": "/Users/marioohashi/.nuget/packages/",
-      "outputPath": "/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/",
+      "projectPath": "/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/API.csproj",
+      "packagesPath": "/Users/sophia/.nuget/packages/",
+      "outputPath": "/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/marioohashi/.nuget/NuGet/NuGet.Config"
+        "/Users/sophia/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/sdk/7.0.307/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1550,7 +1549,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
       }
     }
   }
