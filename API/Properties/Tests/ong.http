@@ -4,14 +4,16 @@ GET https://localhost:7195/api/ong/listar
 ### Buscar ongs
 GET https://localhost:7195/api/ong/buscar/NomeOng
 
-### Cadastrar ong
-POST https://localhost:7195/api/ong/cadastrar
+### Atualizar ongs
+PUT https://localhost:7195/api/ong/atualizar/1
 Content-Type: application/json
 
 {
-    "Nome": "Ong Teste",
+    "Nome": "Ong Teste Atualizando",
     "Missao": "Missao teste",
     "Historico": "Historico teste",
     "InformacoesContato": "Contato teste"
-
 }
+
+### Cadastrar ong
+POST https://localhost:7195/api/ong/cadastrar

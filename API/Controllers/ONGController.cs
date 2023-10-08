@@ -56,6 +56,39 @@ public class ONGController : ControllerBase
         }
     }
 
+    [HttpPut]
+    [Route("atualizar/{id}")]
+    public IActionResult AtualizarONG([FromRoute] int id, [FromBody] ONG ongAtualizada)
+    {
+        try
+        {
+            ONG ongExistente = _ctx.ONGs.Find(id);
+            if (ongExistente == null)
+            {
+                return NotFound();
+            }
+
+            // Atualize as propriedades da ONG existente com as da ONG atualizada
+            ongExistente.Nome = ongAtualizada.Nome;
+            ongExistente.Missao = ongAtualizada.Missao;
+            ongExistente.Historico = ongAtualizada.Historico;
+            ongExistente.InformacoesContato = ongAtualizada.InformacoesContato;
+            // Adicione aqui outras propriedades que precisam ser atualizadas
+
+            // Salve as alterações no banco de dados
+            _ctx.SaveChanges();
+
+            return Ok(ongExistente);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+
+
+
     //POST: api/ong/cadastrar
     [HttpPost]
     [Route("cadastrar")]

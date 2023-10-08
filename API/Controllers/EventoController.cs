@@ -79,6 +79,37 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpPut]
+    [Route("atualizar/{id}")]
+    public IActionResult AtualizarEvento([FromRoute] int id, [FromBody] Evento eventoAtualizado)
+    {
+        try
+        {
+            Evento eventoExistente = _ctx.Eventos.Find(id);
+            if (eventoExistente == null)
+            {
+                return NotFound();
+            }
+
+            // Atualize as propriedades do evento existente com as do evento atualizado
+            eventoExistente.Nome = eventoAtualizado.Nome;
+            eventoExistente.Descricao = eventoAtualizado.Descricao;
+            eventoExistente.ONGId = eventoAtualizado.ONGId;
+
+            // Adicione aqui outras propriedades que precisam ser atualizadas
+
+            // Salve as alterações no banco de dados
+            _ctx.SaveChanges();
+
+            return Ok(eventoExistente);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+
 
     [HttpDelete]
     [Route("deletar/{id}")]
