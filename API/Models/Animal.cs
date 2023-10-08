@@ -13,5 +13,4 @@ public class Animal
     public string? Video { get; set; }
     public ONG? ONG { get; set; }
     public int ONGId { get; set; }
-
 }
