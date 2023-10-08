@@ -9,6 +9,7 @@ POST https://localhost:7195/api/pessoa/cadastrar
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "nome" : "Pessoa Teste atualizado",
     "Endereco": "Rua teste",
     "NumeroTelefone": "(41)0000-0000",
@@ -20,3 +21,11 @@ PUT https://localhost:7195/api/pessoa/atualizar/1
 
 ### Deletar Pessoa
 DELETE https://localhost:7195/api/pessoa/deletar/3
+=======
+    "nome" : "Sophia", 
+    "Endereco": "Rua Candido Lopes",
+    "NumeroTelefone": "(41)99783-6728",
+    "Email": "sophia@email.com"
+    //adicionar
+}
+>>>>>>> main

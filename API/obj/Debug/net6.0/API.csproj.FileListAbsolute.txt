@@ -124,6 +124,16 @@
 /Users/marioohashi/Library/Mobile Documents/com~apple~CloudDocs/DEV/DSV/API-aula/API/obj/Debug/net6.0/API.pdb
 /Users/marioohashi/Library/Mobile Documents/com~apple~CloudDocs/DEV/DSV/API-aula/API/obj/Debug/net6.0/API.genruntimeconfig.cache
 /Users/marioohashi/Library/Mobile Documents/com~apple~CloudDocs/DEV/DSV/API-aula/API/obj/Debug/net6.0/ref/API.dll
+<<<<<<< HEAD
+=======
+/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.csproj.AssemblyReference.cache
+/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.AssemblyInfoInputs.cache
+/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.AssemblyInfo.cs
+/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.csproj.CoreCompileInputs.cache
+/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.MvcApplicationPartsAssemblyInfo.cs
+/Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.MvcApplicationPartsAssemblyInfo.cache
+>>>>>>> origin/main
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.csproj.AssemblyReference.cache
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.GeneratedMSBuildEditorConfig.editorconfig
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.AssemblyInfoInputs.cache
@@ -131,9 +141,12 @@
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.csproj.CoreCompileInputs.cache
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.MvcApplicationPartsAssemblyInfo.cs
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.MvcApplicationPartsAssemblyInfo.cache
+<<<<<<< HEAD
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.dll
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/refint/API.dll
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.pdb
+=======
+>>>>>>> origin/main
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/bin/Debug/net6.0/appsettings.Development.json
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/bin/Debug/net6.0/appsettings.json
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/bin/Debug/net6.0/API
@@ -190,6 +203,7 @@
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/staticwebassets.development.json
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/scopedcss/bundle/API.styles.css
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.csproj.CopyComplete
+<<<<<<< HEAD
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.genruntimeconfig.cache
 /Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/ref/API.dll
 /Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/bin/Debug/net6.0/appsettings.Development.json
@@ -255,3 +269,13 @@
 /Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.pdb
 /Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/API.genruntimeconfig.cache
 /Users/sophia/Desktop/Projeto-Adocao/plataforma-adocao/API/obj/Debug/net6.0/ref/API.dll
+<<<<<<< HEAD
+=======
+=======
+/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.dll
+/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/refint/API.dll
+/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.pdb
+/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/API.genruntimeconfig.cache
+/Users/marioohashi/Library/CloudStorage/Dropbox/Faculdade/4P/DEV/DSV/plataforma-adocao/API/obj/Debug/net6.0/ref/API.dll
+>>>>>>> origin/main
+>>>>>>> main

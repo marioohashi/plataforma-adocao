@@ -9,6 +9,7 @@ PUT https://localhost:7195/api/evento/atualizar/1
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "Nome": "Evento Teste Atualizado",
     "Descricao": "Descricao teste",
     "ONGId": 1
@@ -16,3 +17,10 @@ Content-Type: application/json
 
 ### Cadastrar evento
 POST https://localhost:7195/api/evento/cadastrar
+=======
+    "Nome": "Evento Test",
+    "Descricao": "Evento de doacao teste",
+    "ONGId": "1"  
+    //adicionar
+}
+>>>>>>> main
