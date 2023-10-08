@@ -9,8 +9,42 @@ POST https://localhost:7195/api/evento/cadastrar
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "Nome" : "Feira de Adocao",
+    "Descricao" : "Descricao do evento",
+    "DataEvento" : "2023-11-04T22:02:25.551423",
+    "ONGId" : 2
+}
+
+
+### Deletar Evento
+DELETE https://localhost:7195/api/evento/deletar/5
+
+### Atualizar Evento
+PUT https://localhost:7195/api/evento/atualizar/2
+Content-Type: application/json
+
+{
+    "Nome" : "Nome 2 + Atualizado",
+    "Descricao": "Descricao 2 + Atualizado",
+    "ONGId": 2,
+    "DataEvento": "2024-12-04T22:02:25.551423"
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/main
     "Nome" : "EventX",
     "Descricao" : "Descricao do evento",
     "DataEvento" : "2023-11-04T22:02:25.551423",
     "ONGId" : 2
+<<<<<<< HEAD
+=======
+  "Nome": "Feira de adoção",
+  "descricao": "Feira de Adoção de animais",
+  "dataEvento": "2023-11-04"
+>>>>>>> origin/main
+>>>>>>> main
+=======
+>>>>>>> origin/main
 }
