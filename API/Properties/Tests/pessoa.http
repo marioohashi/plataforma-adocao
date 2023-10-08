@@ -1,0 +1,17 @@
+### Listar de pessoas
+GET https://localhost:7195/api/pessoa/listar
+
+### Buscar pessoas
+GET https://localhost:7195/api/pessoa/buscar/NomePessoa
+
+### Cadastrar pessoa
+POST https://localhost:7195/api/pessoa/cadastrar
+Content-Type: application/json
+
+{
+    "nome" : "Sophia", 
+    "Endereco": "Rua Candido Lopes",
+    "NumeroTelefone": "(41)99783-6728",
+    "Email": "sophia@email.com"
+    //adicionar
+}

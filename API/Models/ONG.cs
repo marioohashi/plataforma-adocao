@@ -2,12 +2,13 @@
 public class ONG
 {
     public ONG() => CriadoEm = DateTime.Now;
-
     public int ONGId { get; set; }
     public string? Nome { get; set; }
     public string? Missao { get; set; }
     public string? Historico { get; set; }
     public string? InformacoesContato { get; set; }
+<<<<<<< HEAD
+=======
 
     // RELAÇÂO ENTRE ONG E EVENTO
     
@@ -18,5 +19,6 @@ public class ONG
     // public List<Animal>? AnimaisDoacao { get; set; }
     // public List<Animal>? AnimaisInteresse { get; set; }
 
+>>>>>>> origin/main
     public DateTime CriadoEm { get; set; }
 }

@@ -1,0 +1,17 @@
+### Listar de ongs
+GET https://localhost:7195/api/ong/listar
+
+### Buscar ongs
+GET https://localhost:7195/api/ong/buscar/NomeOng
+
+### Cadastrar ong
+POST https://localhost:7195/api/ong/cadastrar
+Content-Type: application/json
+
+{
+    "ONGId" : "1",
+    "Nome": "Teste ONG",
+    "Missao": "Procurando lares paras animais",
+    "Historico": "Historico ong",
+    "InformacoesContato": "(41) 99783-6728"
+}

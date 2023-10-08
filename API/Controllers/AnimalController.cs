@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
@@ -19,111 +20,87 @@ namespace API
         // Lista de animais em memória. Nota: Este não é utilizado no código atual e pode ser removido.
         private static List<Animal> animais = new List<Animal>();
 
-        // Rota para listar todos os animais disponíveis para adoção.
-        [HttpGet]
-        [Route("listar")]
-        public IActionResult Listar()
-        {
-            // Obtém a lista de animais do contexto do banco de dados.
-            List<Animal> animais = _ctx.Animais.ToList();
-            // Verifica se a lista está vazia. Se estiver, retorna uma resposta 404 Not Found. 
-            // Caso contrário, retorna a lista de animais como uma resposta 200 OK.
-            return animais.Count == 0 ? NotFound() : Ok(animais);
-        }
+    //GET: api/animal/listar
+    [HttpGet]
+    [Route("listar")]
+    public IActionResult Listar()
+    {
+        List<Animal> animais = _ctx.Animais.ToList();
+        return animais.Count == 0 ? NotFound() : Ok(animais);
+    }
+    //_ctx.Animais.ToList().Count == 0 ? NotFound() : Ok(_ctx.Animais.ToList());
 
-        // Rota para buscar um animal por nome.
-        [HttpGet]
-        [Route("buscar/{nome}")]
-        public IActionResult Buscar([FromRoute] string nome)
+    //GET: api/animal/buscar/{bolacha}
+    [HttpGet]
+    [Route("buscar/{nome}")]
+    public IActionResult Buscar([FromRoute] string nome)
+    {
+        // AppDataContext context = new AppDataContext();
+        // context.
+        foreach (Animal animalCadastrado in _ctx.Animais.ToList())
         {
-            // Loop através de todos os animais cadastrados.
-            foreach (Animal animalCadastrado in _ctx.Animais.ToList())
+            if (animalCadastrado.Nome == nome)
             {
-                // Se o nome do animal corresponder ao nome passado na rota, retorna o animal encontrado.
-                if (animalCadastrado.Nome == nome)
-                {
-                    return Ok(animalCadastrado);
-                }
+                return Ok(animalCadastrado);
             }
-            // Se nenhum match for encontrado, retorna uma resposta 404 Not Found.
+        }
+        return NotFound();
+    }
+
+    //POST: api/animal/cadastrar
+    [HttpPost]
+    [Route("cadastrar")]
+    public IActionResult Cadastrar([FromBody] Animal animal)
+    {
+        _ctx.Animais.Add(animal);
+        _ctx.SaveChanges();
+        return Created("", animal);
+    }
+
+    [HttpDelete]
+    [Route("deletar/{id}")]
+    public IActionResult Deletar([FromRoute] int id)
+    {
+        //Utilizar o FirstOrDefault com a Expressão lambda
+        Animal animal = _ctx.Animais.Find(id);
+        if (animal == null)
+        {
+            return NotFound();
+        }
+        _ctx.Animais.Remove(animal);
+        _ctx.SaveChanges();
+        return Ok(animal);
+    }
+
+    [HttpPost]
+    [Route("adicionarVideos/{id}")]
+    public IActionResult AdicionarVideos([FromRoute] int id, [FromBody] List<string> videos)
+    {
+        Animal animal = _ctx.Animais.Find(id);
+        if (animal == null)
+        {
             return NotFound();
         }
 
-        // Rota para cadastrar um novo animal.
-        [HttpPost]
-        [Route("cadastrar")]
-        public IActionResult Cadastrar([FromBody] Animal animal)
+        animal.Videos.AddRange(videos);
+        _ctx.SaveChanges();
+
+        return Ok(animal);
+    }
+
+    [HttpPost]
+    [Route("adicionarFotos/{id}")]
+    public IActionResult AdicionarFotos([FromRoute] int id, [FromBody] List<string> fotos)
+    {
+        Animal animal = _ctx.Animais.Find(id);
+        if (animal == null)
         {
-            // Adiciona o novo animal ao contexto do banco de dados.
-            _ctx.Animais.Add(animal);
-            // Salva as mudanças no banco de dados.
-            _ctx.SaveChanges();
-            // Retorna o animal criado como uma resposta 201 Created.
-            return Created("", animal);
+            return NotFound();
         }
 
-        // Rota para deletar um animal por ID.
-        [HttpDelete]
-        [Route("deletar/{id}")]
-        public IActionResult Deletar([FromRoute] int id)
-        {
-            // Busca o animal pelo ID.
-            Animal animal = _ctx.Animais.Find(id);
-            // Se o animal não for encontrado, retorna uma resposta 404 Not Found.
-            if (animal == null)
-            {
-                return NotFound();
-            }
-            // Remove o animal do contexto do banco de dados.
-            _ctx.Animais.Remove(animal);
-            // Salva as mudanças no banco de dados.
-            _ctx.SaveChanges();
-            // Retorna o animal removido como uma resposta 200 OK.
-            return Ok(animal);
-        }
+        animal.Fotos.AddRange(fotos);
+        _ctx.SaveChanges();
 
-        // Rota para adicionar vídeos a um animal por ID.
-        [HttpPost]
-        [Route("adicionarVideos/{id}")]
-        public IActionResult AdicionarVideos([FromRoute] int id, [FromBody] List<string> videos)
-        {
-            // // Busca o animal pelo ID.
-            // Animal animal = _ctx.Animais.Find(id);
-            // // Se o animal não for encontrado, retorna uma resposta 404 Not Found.
-            // if (animal == null)
-            // {
-            //     return NotFound();
-            // }
-
-            // // Adiciona os vídeos à lista de vídeos do animal e salva as mudanças no banco de dados.
-            // animal.Videos.AddRange(videos);
-            // _ctx.SaveChanges();
-
-            // // Retorna o animal atualizado como uma resposta 200 OK.
-            // return Ok(animal);
-            return Ok();
-        }
-
-        // Rota para adicionar fotos a um animal por ID.
-        [HttpPost]
-        [Route("adicionarFotos/{id}")]
-        public IActionResult AdicionarFotos([FromRoute] int id, [FromBody] List<string> fotos)
-        {
-            // Busca o animal pelo ID.
-            // Animal animal = _ctx.Animais.Find(id);
-            // // Se o animal não for encontrado, retorna uma resposta 404 Not Found.
-            // if (animal == null)
-            // {
-            //     return NotFound();
-            // }
-
-            // // Adiciona as fotos à lista de fotos do animal e salva as mudanças no banco de dados.
-            // animal.Fotos.AddRange(fotos);
-            // _ctx.SaveChanges();
-
-            // // Retorna o animal atualizado como uma resposta 200 OK.
-            // return Ok(animal);
-            return Ok();
-        }
+        return Ok(animal);
     }
 }
