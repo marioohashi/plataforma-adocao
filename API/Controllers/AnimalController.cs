@@ -3,117 +3,122 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace API
+namespace API;
+
+[ApiController]
+[Route("api/animal")]
+public class AnimalController : ControllerBase
 {
-    [ApiController]
-    [Route("api/animal")]
-    public class AnimalController : ControllerBase
+    private readonly AppDataContext _ctx;
+
+    public AnimalController(AppDataContext ctx)
     {
-        private readonly AppDataContext _ctx;
+        _ctx = ctx;
+    }
+    private static List<Animal> animais = new List<Animal>();
 
-        // Construtor da classe. Recebe uma instância de AppDataContext como parâmetro.
-        public AnimalController(AppDataContext ctx)
+    //GET: api/animal/listar
+    [HttpGet]
+    [Route("listar")]
+    public IActionResult Listar()
+    {
+        try
         {
-            _ctx = ctx;
-        }
-
-        // Lista de animais em memória. Nota: Este não é utilizado no código atual e pode ser removido.
-        private static List<Animal> animais = new List<Animal>();
-
-        //GET: api/animal/listar
-        [HttpGet]
-        [Route("listar")]
-        public IActionResult Listar()
-        {
-            List<Animal> animais = _ctx.Animais.ToList();
+            List<Animal> animais =
+                _ctx.Animais
+                .Include(x => x.ONG)
+                .ToList();
             return animais.Count == 0 ? NotFound() : Ok(animais);
         }
-        //_ctx.Animais.ToList().Count == 0 ? NotFound() : Ok(_ctx.Animais.ToList());
-
-        //GET: api/animal/buscar/{bolacha}
-        [HttpGet]
-        [Route("buscar/{nome}")]
-        public IActionResult Buscar([FromRoute] string nome)
+        catch (Exception e)
         {
-            // AppDataContext context = new AppDataContext();
-            // context.
-            foreach (Animal animalCadastrado in _ctx.Animais.ToList())
+            return BadRequest(e.Message);
+        }
+    }
+
+    //GET: api/animal/buscar/{bolacha}
+    [HttpGet]
+    [Route("buscar/{nome}")]
+    public IActionResult Buscar([FromRoute] string nome)
+    {
+        try
+        {
+            Animal? animalCadastrado =
+                _ctx.Animais
+                .Include(x => x.ONG)
+                .FirstOrDefault(x => x.Nome == nome);
+            if (animalCadastrado != null)
             {
-                if (animalCadastrado.Nome == nome)
-                {
-                    return Ok(animalCadastrado);
-                }
+                return Ok(animalCadastrado);
             }
             return NotFound();
         }
-
-        //POST: api/animal/cadastrar
-        [HttpPost]
-        [Route("cadastrar")]
-        public IActionResult Cadastrar([FromBody] Animal animal)
+        catch (Exception e)
         {
+            return BadRequest(e.Message);
+        }
+    }
+
+    //POST: api/animal/cadastrar
+    [HttpPost]
+    [Route("cadastrar")]
+    public IActionResult Cadastrar([FromBody] Animal animal)
+    {
+        try
+        {
+            ONG? ong =
+                _ctx.ONGs.Find(animal.ONGId);
+            if (ong == null)
+            {
+                return NotFound();
+            }
+            animal.ONG = ong;
             _ctx.Animais.Add(animal);
             _ctx.SaveChanges();
             return Created("", animal);
         }
-
-        [HttpDelete]
-        [Route("deletar/{id}")]
-        public IActionResult Deletar([FromRoute] int id)
+        catch (Exception e)
         {
-            //Utilizar o FirstOrDefault com a Expressão lambda
-            Animal animal = _ctx.Animais.Find(id);
-            if (animal == null)
-            {
-                return NotFound();
-            }
-            _ctx.Animais.Remove(animal);
-            _ctx.SaveChanges();
-            return Ok(animal);
+            Console.WriteLine(e);
+            return BadRequest(e.Message);
         }
+    }
 
-<<<<<<< HEAD
     //PUT: api/animal/atualizar/{id}
     [HttpPut]
     [Route("atualizar/{id}")]
     public IActionResult Atualizar([FromRoute] int id, [FromBody] Animal animalAtualizado)
     {
         try
-=======
-        [HttpPost]
-        [Route("adicionarVideos/{id}")]
-        public IActionResult AdicionarVideos([FromRoute] int id, [FromBody] List<string> videos)
         {
-            Animal animal = _ctx.Animais.Find(id);
-            if (animal == null)
+            Animal animalExistente = _ctx.Animais.Find(id);
+            if (animalExistente == null)
             {
                 return NotFound();
             }
 
-            animal.Videos.AddRange(videos);
+            // Atualize as propriedades do animal existente com as do animal atualizado
+            animalExistente.Nome = animalAtualizado.Nome;
+            animalExistente.Idade = animalAtualizado.Idade;
+            animalExistente.Especie = animalAtualizado.Especie;
+            animalExistente.Raca = animalAtualizado.Raca;
+            animalExistente.Porte = animalAtualizado.Porte;
+            animalExistente.Comportamento = animalAtualizado.Comportamento;
+            animalExistente.Descricao = animalAtualizado.Descricao;
+            animalExistente.Foto = animalAtualizado.Foto;
+            animalExistente.Video = animalAtualizado.Video;
+            animalExistente.ONGId = animalAtualizado.ONGId;
+
+            // Salve as alterações no banco de dados
             _ctx.SaveChanges();
 
-            return Ok(animal);
+            return Ok(animalExistente);
         }
-
-        [HttpPost]
-        [Route("adicionarFotos/{id}")]
-        public IActionResult AdicionarFotos([FromRoute] int id, [FromBody] List<string> fotos)
->>>>>>> main
+        catch (Exception e)
         {
-            Animal animal = _ctx.Animais.Find(id);
-            if (animal == null)
-            {
-                return NotFound();
-            }
-
-            animal.Fotos.AddRange(fotos);
-            _ctx.SaveChanges();
-
-            return Ok(animal);
+            return BadRequest(e.Message);
         }
     }
-<<<<<<< HEAD
 
     [HttpDelete]
     [Route("delete/{id}")]
@@ -140,6 +145,4 @@ namespace API
 
 internal class HttpUpdateAttribute : Attribute
 {
-=======
->>>>>>> main
 }

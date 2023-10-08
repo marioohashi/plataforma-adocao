@@ -4,79 +4,79 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace API
+namespace API;
+
+[ApiController]
+[Route("api/evento")]
+public class EventoController : ControllerBase
 {
-    [ApiController]
-    [Route("api/evento")]
-    public class EventoController : ControllerBase
+    private readonly AppDataContext _ctx;
+
+    public EventoController(AppDataContext ctx)
     {
-        private readonly AppDataContext _ctx;
+        _ctx = ctx;
+    }
+    private static List<Evento> eventos = new List<Evento>();
 
-        [HttpGet]
-        [Route("listar")]
-        public IActionResult Listar()
+    [HttpGet]
+    [Route("listar")]
+    public IActionResult Listar()
+    {
+        try
         {
-            try
-            {
-                List<Evento> eventos = _ctx.Eventos.Include(x => x.ONG).ToList();
-                return eventos.Count == 0 ? NotFound() : Ok(eventos);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            List<Evento> eventos = _ctx.Eventos.Include(x => x.ONG).ToList();
+            return eventos.Count == 0 ? NotFound() : Ok(eventos);
         }
-
-        [HttpGet]
-        [Route("buscar/{nome}")]
-        public IActionResult Buscar([FromRoute] string nome)
+        catch (Exception e)
         {
-            try
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpGet]
+    [Route("buscar/{nome}")]
+    public IActionResult Buscar([FromRoute] string nome)
+    {
+        try
+        {
+            Evento? eventoCadastrado =
+                _ctx.Eventos
+                .Include(x => x.ONG)
+                .FirstOrDefault(x => x.Nome == nome);
+            if (eventoCadastrado != null)
             {
-                Evento? eventoCadastrado =
-                    _ctx.Eventos
-                    .Include(x => x.ONG)
-                    .FirstOrDefault(x => x.Nome == nome);
-                if (eventoCadastrado != null)
-                {
-                    // Se o nome do evento corresponder ao nome passado na rota, retorna o evento encontrado.
-                    if (eventoCadastrado.Nome == nome)
-                    {
-                        return Ok(eventoCadastrado);
-                    }
-                }
+                return Ok(eventoCadastrado);
+            }
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    //POST: api/evento/cadastrar
+    [HttpPost]
+    [Route("cadastrar")]
+    public IActionResult Cadastrar([FromBody] Evento evento)
+    {
+        try
+        {
+            ONG? ong =
+                _ctx.ONGs.Find(evento.ONGId);
+            if (ong == null)
+            {
                 return NotFound();
             }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            evento.ONG = ong;
+            _ctx.Eventos.Add(evento);
+            _ctx.SaveChanges();
+            return Created("", evento);
         }
-
-        //POST: api/evento/cadastrar
-        [HttpPost]
-        [Route("cadastrar")]
-        public IActionResult Cadastrar([FromBody] Evento evento)
+        catch (Exception e)
         {
-            try
-            {
-                ONG? ong =
-                    _ctx.ONGs.Find(evento.ONGId);
-                if (ong == null)
-                {
-                    return NotFound();
-                }
-                evento.ONG = ong;
-                _ctx.Eventos.Add(evento);
-                _ctx.SaveChanges();
-                return Created("", evento);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            return BadRequest(e.Message);
         }
-<<<<<<< HEAD
     }
 
     [HttpPut]
@@ -119,60 +119,19 @@ namespace API
     public IActionResult Deletar([FromRoute] int id)
     {
         try
-=======
-
-        [HttpPut]
-        [Route("atualizar/{id}")]
-        public IActionResult AtualizarEvento([FromRoute] int id, [FromBody] Evento eventoAtualizado)
->>>>>>> main
         {
-            try
+            Evento? eventoCadastrado = _ctx.Eventos.Find(id);
+            if (eventoCadastrado != null)
             {
-                Evento eventoExistente = _ctx.Eventos.Find(id);
-                if (eventoExistente == null)
-                {
-                    return NotFound();
-                }
-
-                // Atualize as propriedades do evento existente com as do evento atualizado
-                eventoExistente.Nome = eventoAtualizado.Nome;
-                eventoExistente.Descricao = eventoAtualizado.Descricao;
-                eventoExistente.ONGId = eventoAtualizado.ONGId;
-
-                // Adicione aqui outras propriedades que precisam ser atualizadas
-
-                // Salve as alterações no banco de dados
+                _ctx.Eventos.Remove(eventoCadastrado);
                 _ctx.SaveChanges();
-
-                return Ok(eventoExistente);
+                return Ok();
             }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            return NotFound();
         }
-
-
-
-        [HttpDelete]
-        [Route("deletar/{id}")]
-        public IActionResult Deletar([FromRoute] int id)
+        catch (Exception e)
         {
-            try
-            {
-                Evento? eventoCadastrado = _ctx.Eventos.Find(id);
-                if (eventoCadastrado != null)
-                {
-                    _ctx.Eventos.Remove(eventoCadastrado);
-                    _ctx.SaveChanges();
-                    return Ok();
-                }
-                return NotFound();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            return BadRequest(e.Message);
         }
     }
 }
