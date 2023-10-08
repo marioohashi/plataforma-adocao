@@ -4,12 +4,12 @@ GET https://localhost:7195/api/animal/listar
 ### Buscar Animais
 GET https://localhost:7195/api/animal/buscar/NomeAnimal
 
-### Cadastrar animal
-POST https://localhost:7195/api/animal/cadastrar
+### Atualizar Animais
+PUT https://localhost:7195/api/animal/atualizar/1
 Content-Type: application/json
 
 {
-    "Nome": "Toby",
+    "Nome": "Jonathan",
     "Idade": "2",
     "Especie": "Cachorro",
     "Raca": "Labrador",
@@ -19,9 +19,11 @@ Content-Type: application/json
     "Foto": null,
     "Video": null,
     "ONGId": 1
-
-    //adicionar
 }
+
+### Cadastrar animal
+POST https://localhost:7195/api/animal/cadastrar
+
 
 ### AdicionarFotos
 POST: api/animal/adicionarFotos/{id}

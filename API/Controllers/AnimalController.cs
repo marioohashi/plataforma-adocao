@@ -108,14 +108,21 @@ public class AnimalController : ControllerBase
     //PUT: api/animal/atualizar/{id}
     [HttpPut]
     [Route("atualizar/{id}")]
-    public IActionResult Atualizar([FromRoute] int id, [FromBody] Animal animalAtualizado)
+    public IActionResult AtualizarAnimal([FromRoute] int id, [FromBody] Animal animalAtualizado)
     {
         try
         {
-            Animal animalExistente = _ctx.Animais.Find(id);
+            // Verifica se o ID fornecido é válido
+            if (id <= 0)
+            {
+                return BadRequest("O ID do animal é inválido.");
+            }
+
+            // Verifica se o animal com o ID especificado existe no banco de dados
+            Animal animalExistente = _ctx.Animais.FirstOrDefault(a => a.AnimalId == id);
             if (animalExistente == null)
             {
-                return NotFound();
+                return NotFound("Animal não encontrado.");
             }
 
             // Atualize as propriedades do animal existente com as do animal atualizado
@@ -137,8 +144,9 @@ public class AnimalController : ControllerBase
         }
         catch (Exception e)
         {
-            return BadRequest(e.Message);
+            return BadRequest($"Ocorreu um erro ao atualizar o animal: {e.Message}");
         }
     }
+
 
 }
