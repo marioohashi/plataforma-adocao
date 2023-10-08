@@ -42,6 +42,63 @@ namespace API
                 }
                 //_ctx.Pessoas.ToList().Count == 0 ? NotFound() : Ok(_ctx.Pessoas.ToList());
 
+<<<<<<< HEAD
+        // PUT: api/pessoa/atualizar/{id}
+        [HttpPut]
+        [Route("atualizar/{id}")]
+        public IActionResult Atualizar([FromRoute] int id, [FromBody] Pessoa pessoaAtualizada)
+        {
+            try
+            {
+                Pessoa pessoaExistente = _ctx.Pessoas.Find(id);
+
+                if (pessoaExistente == null)
+                {
+                    return NotFound();
+                }
+
+                // Atualizar as propriedades da pessoaExistente com os valores da pessoaAtualizada
+
+                pessoaExistente.Nome = pessoaAtualizada.Nome;
+                pessoaExistente.Endereco = pessoaAtualizada.Endereco;
+                pessoaExistente.NumeroTelefone = pessoaAtualizada.NumeroTelefone;
+                pessoaExistente.Email = pessoaAtualizada.Email;
+
+
+                // Adicione outras propriedades que você deseja atualizar
+
+                _ctx.SaveChanges();
+
+                return Ok(pessoaExistente);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        // DELETE: api/pessoa/deletar/{id}
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public IActionResult DeletarPessoa([FromRoute] int id)
+        {
+            try
+            {
+                Pessoa pessoa = _ctx.Pessoas.Find(id);
+                if (pessoa == null)
+                {
+                    return NotFound();
+                }
+
+                _ctx.Pessoas.Remove(pessoa);
+                _ctx.SaveChanges();
+
+                return Ok(pessoa);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+=======
                 //GET: api/pessoa/buscar/{nome}
                 [HttpGet]
                 [Route("buscar/{nome}")]
@@ -148,6 +205,7 @@ namespace API
                         }
                     }
                 }
+>>>>>>> main
             }
         }
     }

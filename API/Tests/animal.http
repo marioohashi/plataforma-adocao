@@ -21,8 +21,8 @@ POST https://localhost:7195/api/animal/cadastrar
 Content-Type: application/json
 
 {
-    "Nome" : "asda",
-    "Idade": "1 ano e 6 meses",
+    "Nome" : "dasdasdaisdjadjsoa",
+    "Idade": "12",
     "Especie": "teste",
     "Raca": "teste",
     "Porte": "teste",
@@ -31,12 +31,23 @@ Content-Type: application/json
     "Foto" : "url2",
     "Video" : "url1",
     "ONGId" : 2
+    
 }
 
 ### Deletar Animal
 DELETE https://localhost:7195/api/animal/deletar/3
 
 ### Atualizar Animal
+<<<<<<< HEAD
+PUT https://localhost:7195/api/animal/atualizar/1
+
+
+
+
+### Delete ong
+DELETE https://localhost:7195/api/animal/delete/2
+Content-Type: application/json
+=======
 PUT https://localhost:7195/api/animal/atualizar/4
 Content-Type: application/json
 
@@ -77,3 +88,4 @@ Content-Type: application/json
 =======
 >>>>>>> origin/main
 }
+>>>>>>> main

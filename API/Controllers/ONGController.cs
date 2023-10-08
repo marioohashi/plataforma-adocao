@@ -71,6 +71,43 @@ namespace API
             }
         }
 
+        // PUT: api/ong/atualizar/{id}
+        [HttpPut]
+        [Route("atualizar/{id}")]
+        public IActionResult Atualizar([FromRoute] int id, [FromBody] ONG ongAtualizada)
+        {
+            try
+            {
+                ONG ongExistente = _ctx.ONGs.Find(id);
+
+                if (ongExistente == null)
+                {
+                    return NotFound();
+                }
+
+                // Atualizar as propriedades da ongExistente com os valores da ongAtualizada
+
+                ongExistente.Nome = ongAtualizada.Nome;
+                ongExistente.Missao = ongAtualizada.Missao;
+                ongExistente.Historico = ongAtualizada.Historico;
+                ongExistente.InformacoesContato = ongAtualizada.InformacoesContato;
+
+
+                // Adicione outras propriedades que deseja atualizar
+
+                _ctx.SaveChanges();
+
+                return Ok(ongExistente);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+
+
         [HttpDelete]
         [Route("deletar/{id}")]
         public IActionResult Deletar([FromRoute] int id)
@@ -92,26 +129,30 @@ namespace API
             }
         }
 
-        //PUT: api/ong/atualizar/{id}
+        // PUT: api/ong/atualizar/{id}
         [HttpPut]
         [Route("atualizar/{id}")]
-        public IActionResult Atualizar([FromRoute] int id, [FromBody] ONG ongAtualizado)
+        public IActionResult Atualizar([FromRoute] int id, [FromBody] ONG ongAtualizada)
         {
             try
             {
-                ONG? ongExistente = _ctx.ONGs.Find(id);
+                ONG ongExistente = _ctx.ONGs.Find(id);
 
                 if (ongExistente == null)
                 {
                     return NotFound();
                 }
 
-                ongExistente.Nome = ongAtualizado.Nome;
-                ongExistente.Missao = ongAtualizado.Missao;
-                ongExistente.Historico = ongAtualizado.Historico;
-                ongExistente.InformacoesContato = ongAtualizado.InformacoesContato;
+                // Atualizar as propriedades da ongExistente com os valores da ongAtualizada
 
-                // Salve as alterações no banco de dados
+                ongExistente.Nome = ongAtualizada.Nome;
+                ongExistente.Missao = ongAtualizada.Missao;
+                ongExistente.Historico = ongAtualizada.Historico;
+                ongExistente.InformacoesContato = ongAtualizada.InformacoesContato;
+
+
+                // Adicione outras propriedades que deseja atualizar
+
                 _ctx.SaveChanges();
 
                 return Ok(ongExistente);
@@ -121,5 +162,37 @@ namespace API
                 return BadRequest(e.Message);
             }
         }
-    }
-}
+
+
+
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public IActionResult Deletar([FromRoute] int id)
+        {
+            try
+            {
+                try
+                {
+                    ONG? ongExistente = _ctx.ONGs.Find(id);
+
+                    if (ongExistente == null)
+                    {
+                        return NotFound();
+                    }
+
+                    ongExistente.Nome = ongAtualizado.Nome;
+                    ongExistente.Missao = ongAtualizado.Missao;
+                    ongExistente.Historico = ongAtualizado.Historico;
+                    ongExistente.InformacoesContato = ongAtualizado.InformacoesContato;
+
+                    // Salve as alterações no banco de dados
+                    _ctx.SaveChanges();
+
+                    return Ok(ongExistente);
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
+            }}

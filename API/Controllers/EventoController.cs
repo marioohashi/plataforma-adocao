@@ -76,10 +76,55 @@ namespace API
                 return BadRequest(e.Message);
             }
         }
+<<<<<<< HEAD
+    }
+
+    [HttpPut]
+    [Route("atualizar/{id}")]
+    public IActionResult Atualizar([FromRoute] int id, [FromBody] Evento eventoAtualizado)
+    {
+        try
+        {
+            Evento eventoExistente = _ctx.Eventos.Find(id);
+
+            if (eventoExistente == null)
+            {
+                return NotFound();
+            }
+
+            // Atualize os campos do eventoExistente com os valores do eventoAtualizado
+            eventoExistente.Nome = eventoAtualizado.Nome;
+            eventoExistente.Descricao = eventoAtualizado.Descricao;
+            eventoExistente.ONG = eventoAtualizado.ONG;
+            eventoExistente.ONGId = eventoAtualizado.ONGId;
+            eventoExistente.DataEvento = eventoAtualizado.DataEvento;
+
+            // Você pode continuar atualizando outros campos aqui, conforme necessário.
+
+            _ctx.Eventos.Update(eventoExistente);
+            _ctx.SaveChanges();
+
+            return Ok(eventoExistente);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+
+
+    [HttpDelete]
+    [Route("delete/{id}")]
+    public IActionResult Deletar([FromRoute] int id)
+    {
+        try
+=======
 
         [HttpPut]
         [Route("atualizar/{id}")]
         public IActionResult AtualizarEvento([FromRoute] int id, [FromBody] Evento eventoAtualizado)
+>>>>>>> main
         {
             try
             {

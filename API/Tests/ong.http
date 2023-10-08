@@ -21,6 +21,28 @@ Content-Type: application/json
 
 {
 <<<<<<< HEAD
+    "nome" : "ONG22",
+    "missao": "null",
+    "historico": "null",
+    "informacoesContato": "null"
+}
+
+### Atualizar ONG
+PUT https://localhost:7195/api/ong/atualizar/7
+Content-Type: application/json
+
+{
+"nome" : "ONG1",
+"novaMissao": "Nova Missão",
+"novoHistorico": "Novo Histórico",
+"novasInformacoesContato": "Novas Informações de Contato"
+}
+
+### Delete ong
+DELETE https://localhost:7195/api/ong/delete/1
+Content-Type: application/json
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
     "nome" : "ONG1",
     "missao": "ONG1",
@@ -59,3 +81,4 @@ Content-Type: application/json
 =======
 >>>>>>> origin/main
 }
+>>>>>>> main

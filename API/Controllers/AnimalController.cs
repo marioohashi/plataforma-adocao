@@ -72,6 +72,14 @@ namespace API
             return Ok(animal);
         }
 
+<<<<<<< HEAD
+    //PUT: api/animal/atualizar/{id}
+    [HttpPut]
+    [Route("atualizar/{id}")]
+    public IActionResult Atualizar([FromRoute] int id, [FromBody] Animal animalAtualizado)
+    {
+        try
+=======
         [HttpPost]
         [Route("adicionarVideos/{id}")]
         public IActionResult AdicionarVideos([FromRoute] int id, [FromBody] List<string> videos)
@@ -91,6 +99,7 @@ namespace API
         [HttpPost]
         [Route("adicionarFotos/{id}")]
         public IActionResult AdicionarFotos([FromRoute] int id, [FromBody] List<string> fotos)
+>>>>>>> main
         {
             Animal animal = _ctx.Animais.Find(id);
             if (animal == null)
@@ -104,4 +113,33 @@ namespace API
             return Ok(animal);
         }
     }
+<<<<<<< HEAD
+
+    [HttpDelete]
+    [Route("delete/{id}")]
+    public IActionResult Deletar([FromRoute] int id)
+    {
+        try
+        {
+            Animal? animalCadastrado = _ctx.Animais.Find(id);
+            if (animalCadastrado != null)
+            {
+                _ctx.Animais.Remove(animalCadastrado);
+                _ctx.SaveChanges();
+                return Ok();
+            }
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+}
+
+internal class HttpUpdateAttribute : Attribute
+{
+=======
+>>>>>>> main
 }
