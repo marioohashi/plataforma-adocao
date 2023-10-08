@@ -9,5 +9,11 @@ public class Pessoa
     public string? NumeroTelefone { get; set; }
     public string? Email { get; set; }
     // public List<Animal>? AnimaisAdotados { get; set; }
+<<<<<<< HEAD
+=======
+    // public List<Animal>? AnimaisDoados { get; set; }
+    // public List<Animal>? AnimaisDoacao { get; set; }
+    // public List<Animal>? AnimaisInteresse { get; set; }
+>>>>>>> origin/main
     public DateTime CriadoEm { get; set; }
 }
