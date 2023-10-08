@@ -9,6 +9,8 @@ POST https://localhost:7195/api/evento/cadastrar
 Content-Type: application/json
 
 {
-    "nome" : "Sophia", 
+    "Nome": "Evento Test",
+    "Descricao": "Evento de doacao teste",
+    "ONGId": "1"  
     //adicionar
 }

@@ -2,13 +2,22 @@
 GET https://localhost:7195/api/animal/listar
 
 ### Buscar Animais
+<<<<<<< HEAD
 GET https://localhost:7195/api/animal/buscar/Novo Nome
+=======
+<<<<<<< HEAD
+GET https://localhost:7195/api/animal/buscar/EventX
+=======
+GET https://localhost:7195/api/animal/buscar/Ximbinha
+>>>>>>> origin/main
+>>>>>>> main
 
 ### Cadastrar Animal
 POST https://localhost:7195/api/animal/cadastrar
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "Nome" : "asda",
     "Idade": "1 ano e 6 meses",
     "Especie": "teste",
@@ -29,6 +38,7 @@ PUT https://localhost:7195/api/animal/atualizar/4
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "Nome" : "Novo Nome UPDATE",
     "Idade" : "2 anos UPDATE",
     "Especie" : "Nova Especie UPDATE",
@@ -40,4 +50,24 @@ Content-Type: application/json
     "Video" : "nova-url-do-video UPDATE",
     "ONGId" : 4
 
+=======
+    "Nome" : "Novo Nome",
+    "Idade": "2 anos",
+    "Especie": "Nova Especie",
+    "Raca": "Nova Raca",
+    "Porte": "Novo Porte",
+    "Comportamento": "Novo Comportamento",
+    "Descricao": "Nova Descricao",
+    "Foto" : "nova-url-da-foto",
+    "Video" : "nova-url-do-video",
+=======
+    "Nome": "Ximbinha",
+    "Idade": "2 anos e 6 meses",
+    "Especie": "Cachorro",
+    "Raca": "SRD",
+    "Porte": "Pequeno",
+    "Comportamento": "Besta selvagem",
+    "Descricao": "Encontrei no lixo e não aguento mais essa besta selvagem"
+>>>>>>> origin/main
+>>>>>>> main
 }

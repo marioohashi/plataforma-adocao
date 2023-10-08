@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20231004183830_CreateDatabase")]
+    partial class CreateDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.21");
@@ -32,19 +34,6 @@ namespace API.Migrations
                     b.Property<string>("Especie")
                         .HasColumnType("TEXT");
 
-<<<<<<< HEAD
-                    b.Property<string>("Foto")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Idade")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ONGId")
-=======
                     b.Property<int?>("Idade")
                         .HasColumnType("INTEGER");
 
@@ -52,7 +41,6 @@ namespace API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("PessoaId")
->>>>>>> origin/main
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Porte")
@@ -61,18 +49,8 @@ namespace API.Migrations
                     b.Property<string>("Raca")
                         .HasColumnType("TEXT");
 
-<<<<<<< HEAD
-                    b.Property<string>("Video")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("AnimalId");
 
-                    b.HasIndex("ONGId");
-
-=======
-                    b.HasKey("AnimalId");
-
->>>>>>> origin/main
                     b.ToTable("Animais");
                 });
 
@@ -94,18 +72,8 @@ namespace API.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
 
-<<<<<<< HEAD
-                    b.Property<int>("ONGId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("EventoId");
 
-                    b.HasIndex("ONGId");
-
-=======
-                    b.HasKey("EventoId");
-
->>>>>>> origin/main
                     b.ToTable("Eventos");
                 });
 
@@ -160,31 +128,6 @@ namespace API.Migrations
 
                     b.ToTable("Pessoas");
                 });
-<<<<<<< HEAD
-
-            modelBuilder.Entity("API.Models.Animal", b =>
-                {
-                    b.HasOne("API.Models.ONG", "ONG")
-                        .WithMany()
-                        .HasForeignKey("ONGId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ONG");
-                });
-
-            modelBuilder.Entity("API.Models.Evento", b =>
-                {
-                    b.HasOne("API.Models.ONG", "ONG")
-                        .WithMany()
-                        .HasForeignKey("ONGId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ONG");
-                });
-=======
->>>>>>> origin/main
 #pragma warning restore 612, 618
         }
     }

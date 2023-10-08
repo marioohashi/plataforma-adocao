@@ -7,5 +7,18 @@ public class ONG
     public string? Missao { get; set; }
     public string? Historico { get; set; }
     public string? InformacoesContato { get; set; }
+<<<<<<< HEAD
+=======
+
+    // RELAÇÂO ENTRE ONG E EVENTO
+    
+    // public List<string>? HabilidadesColaboradores { get; set; }
+    // public List<string>? AreasAtuacao { get; set; }
+    // public List<Evento>? Eventos { get; set; }
+    // public List<Animal>? AnimaisDoados { get; set; }
+    // public List<Animal>? AnimaisDoacao { get; set; }
+    // public List<Animal>? AnimaisInteresse { get; set; }
+
+>>>>>>> origin/main
     public DateTime CriadoEm { get; set; }
 }

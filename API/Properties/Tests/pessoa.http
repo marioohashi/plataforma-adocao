@@ -10,5 +10,8 @@ Content-Type: application/json
 
 {
     "nome" : "Sophia", 
+    "Endereco": "Rua Candido Lopes",
+    "NumeroTelefone": "(41)99783-6728",
+    "Email": "sophia@email.com"
     //adicionar
 }

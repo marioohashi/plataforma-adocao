@@ -1,14 +1,20 @@
 ### Listar de Eventos
 GET https://localhost:7195/api/evento/listar
 
+<<<<<<< HEAD
 ### Buscar Eventos
 GET https://localhost:7195/api/evento/buscar/Evento1
+=======
+### Buscar eventos
+GET https://localhost:7195/api/evento/buscar/Evento
+>>>>>>> origin/main
 
 ### Cadastrar evento
 POST https://localhost:7195/api/evento/cadastrar
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "Nome" : "Feira de Adocao",
     "Descricao" : "Descricao do evento",
     "DataEvento" : "2023-11-04T22:02:25.551423",
@@ -28,4 +34,16 @@ Content-Type: application/json
     "Descricao": "Descricao 2 + Atualizado",
     "ONGId": 2,
     "DataEvento": "2024-12-04T22:02:25.551423"
+=======
+<<<<<<< HEAD
+    "Nome" : "EventX",
+    "Descricao" : "Descricao do evento",
+    "DataEvento" : "2023-11-04T22:02:25.551423",
+    "ONGId" : 2
+=======
+  "Nome": "Feira de adoção",
+  "descricao": "Feira de Adoção de animais",
+  "dataEvento": "2023-11-04"
+>>>>>>> origin/main
+>>>>>>> main
 }

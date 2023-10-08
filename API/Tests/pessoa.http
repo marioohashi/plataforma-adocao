@@ -9,10 +9,12 @@ POST https://localhost:7195/api/pessoa/cadastrar
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "nome" : "Joacir Moreira",
     "endereco": "Rua Oliveira Viana 3306",
     "numeroTelefone": "(41)999273910",
     "email": "joacir@gmail.com"
+<<<<<<< HEAD
 }
 
 
@@ -28,4 +30,12 @@ Content-Type: application/json
     "Endereco": "Endereço 2 + Atualizado",
     "NumeroTelefone": "Numero Telefone 2 + Atualizado",
     "Email": "Numero Telefone 2 + Atualizado"
+=======
+=======
+    "Nome" : "Joao das Neves",
+    "endereco": "Endereço",
+    "numeroTelefone": "(41)789413213",
+    "email": "contato@gmail.com"
+>>>>>>> origin/main
+>>>>>>> main
 }
