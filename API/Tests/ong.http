@@ -1,28 +1,16 @@
 ### Listar de ONGs
 GET https://localhost:7195/api/ong/listar
 
-<<<<<<< HEAD
 ### Buscar ONGs
 GET https://localhost:7195/api/ong/buscar/ONG1
-=======
-### Buscar ongs
-GET https://localhost:7195/api/ong/buscar/ONG2
->>>>>>> origin/main
 
 ### Cadastrar ong
 POST https://localhost:7195/api/ong/cadastrar
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
     "nome" : "ONG2",
     "missao": "null",
     "historico": "null",
     "informacoesContato": "null"
-=======
-    "nome": "ONG3",
-    "missao": "Missão da ONG",
-    "historico": "Historico da ONG",
-    "informacoesContato": "contato@ong.com.br"
->>>>>>> origin/main
 }

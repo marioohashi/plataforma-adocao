@@ -59,22 +59,43 @@ namespace API
 
     [HttpDelete]
     [Route("deletar/{id}")]
-    public IActionResult Deletar([FromRoute] int id)
+    public IActionResult DeletarAnimal([FromRoute] int id)
     {
         //Utilizar o FirstOrDefault com a Expressão lambda
         Animal animal = _ctx.Animais.Find(id);
         if (animal == null)
         {
+<<<<<<< HEAD
+            Animal animal = _ctx.Animais.Find(id);
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            _ctx.Animais.Remove(animal);
+            _ctx.SaveChanges();
+
+            return Ok(animal);
+=======
             return NotFound();
+>>>>>>> main
         }
         _ctx.Animais.Remove(animal);
         _ctx.SaveChanges();
         return Ok(animal);
     }
 
+<<<<<<< HEAD
+
+    //PUT: api/animal/atualizar/{id}
+    [HttpPut]
+    [Route("atualizar/{id}")]
+    public IActionResult Atualizar([FromRoute] int id, [FromBody] Animal animalAtualizado)
+=======
     [HttpPost]
     [Route("adicionarVideos/{id}")]
     public IActionResult AdicionarVideos([FromRoute] int id, [FromBody] List<string> videos)
+>>>>>>> main
     {
         Animal animal = _ctx.Animais.Find(id);
         if (animal == null)
