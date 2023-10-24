@@ -93,7 +93,6 @@ namespace API
                 pessoaExistente.NumeroTelefone = pessoaAtualizada.NumeroTelefone;
                 pessoaExistente.Email = pessoaAtualizada.Email;
 
-
                 // Adicione outras propriedades que você deseja atualizar
 
                 _ctx.SaveChanges();
@@ -158,6 +157,5 @@ namespace API
                 return StatusCode(500, "Ocorreu um erro ao adotar o animal.");
             }
         }
-
     }
 }

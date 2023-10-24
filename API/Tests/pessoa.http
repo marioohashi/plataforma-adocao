@@ -13,7 +13,6 @@ Content-Type: application/json
     "endereco": "Rua teste",
     "numeroTelefone": "(41)0000-0000",
     "email": "pessoa@email.com"
-    
 }
 
 ### Atualizar Pessoa 
@@ -25,12 +24,11 @@ Content-Type: application/json
     "endereco": "Rua teste atualizado",
     "numeroTelefone": "(41)0000-0000 atualizado",
     "email": "pessoa@email.com atualizado"
-    
 }
 
 ### Delete Pessoa
-DELETE https://localhost:7195/api/pessoa/delete/2
+DELETE https://localhost:7195/api/pessoa/delete/5
 
 ### Adotar Animal
 //{pessoaId}/adotaranimal/{animalId}
-POST https://localhost:7195/api/pessoa/4/AdotarAnimal/1
+POST https://localhost:7195/api/pessoa/4/AdotarAnimal/7

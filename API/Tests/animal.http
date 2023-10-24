@@ -2,7 +2,7 @@
 GET https://localhost:7195/api/animal/listar
 
 ### Buscar Animais
-GET https://localhost:7195/api/animal/buscar/EventX
+GET https://localhost:7195/api/animal/buscar/Cadastro Pet Teste
 
 ### Cadastrar Animal
 POST https://localhost:7195/api/animal/cadastrar
@@ -18,11 +18,11 @@ Content-Type: application/json
     "Descricao": "Descricao teste",
     "Foto" : "url foto teste",
     "Video" : "video url teste",
-    "ONGId" : 1
+    "ONGId" : 3
 }
 
 ### Atualizar Animal
-PUT https://localhost:7195/api/animal/atualizar/1
+PUT https://localhost:7195/api/animal/atualizar/5
 Content-Type: application/json
 
 {
@@ -35,8 +35,8 @@ Content-Type: application/json
     "Descricao": "Descricao teste atualizado",
     "Foto" : "url foto teste atualizado",
     "Video" : "video url teste atualizado",
-    "ONGId" : 1
+    "ONGId" : 3
 }
 
 ### Delete animal
-DELETE https://localhost:7195/api/animal/delete/1
+DELETE https://localhost:7195/api/animal/delete/3

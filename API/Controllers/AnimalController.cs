@@ -36,7 +36,7 @@ public class AnimalController : ControllerBase
         }
     }
 
-    //GET: api/animal/buscar/{bolacha}
+    //GET: api/animal/buscar/{}
     [HttpGet]
     [Route("buscar/{nome}")]
     public IActionResult Buscar([FromRoute] string nome)

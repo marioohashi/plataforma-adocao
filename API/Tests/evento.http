@@ -12,18 +12,18 @@ Content-Type: application/json
     "Nome" : "Evento teste",
     "Descricao" : "Descricao do evento teste",
     "DataEvento" : "2023-11-04T22:02:25.551423",
-    "ONGId" : 1
+    "ONGId" : 3
 }
 
 ### Atualizar evento
-PUT https://localhost:7195/api/evento/atualizar/1
+PUT https://localhost:7195/api/evento/atualizar/2
 Content-Type: application/json
 
 {
     "Nome" : "Evento teste atualizado",
     "Descricao" : "Descricao do evento teste atualizado",
     "DataEvento" : "2023-11-04T22:02:25.551423",
-    "ONGId" : 1
+    "ONGId" : 3
 }
 
 ### Delete evento
