@@ -1,1 +1,26 @@
-<p>produto-cadastrar works!</p>
+<!-- pessoa-listar.component.html -->
+<h1>Pessoas</h1>
+
+<div class="card-container">
+  <div *ngFor="let pessoa of pessoas" class="card">
+    <div class="card-header">
+      <h2>ID: {{ pessoa.pessoaId }}</h2>
+    </div>
+    <div class="card-body">
+      <p><strong>Nome:</strong> {{ pessoa.nome }}</p>
+      <p><strong>Endereço:</strong> {{ pessoa.endereco }}</p>
+      <p><strong>Número de Telefone:</strong> {{ pessoa.numeroTelefone }}</p>
+      <p><strong>Email:</strong> {{ pessoa.email }}</p>
+      <p><strong>Animal ID:</strong> {{ pessoa.animalId }}</p>
+      <p>
+        <strong>Criado Em:</strong>
+        {{ pessoa.criadoEm | date : "dd/MM/yyyy HH:mm:ss" }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <button (click)="deletar(pessoa.pessoaId)">Deletar</button>
+      <button (click)="atualizar(pessoa.pessoaId)">atualizar</button>
+      <!-- Adicione aqui o código para a ação de alterar -->
+    </div>
+  </div>
+</div>

@@ -1,10 +1,82 @@
 <!-- Barra de ferramentas -->
-<a routerLink="/pages/animal/listar"> Listar </a>
-<a routerLink="/pages/animal/cadastrar"> Cadastrar </a>
+<mat-toolbar color="primary">
+  <button class="menu" mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Adoção Responsável de Animais de Estimação</span>
+</mat-toolbar>
 
-<!-- Barra de navegação -->
+<div class="content">
+  <mat-sidenav-container class="container main-container">
+    <mat-sidenav #sidenav [opened]="true" mode="side">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/pages/animal/listar">
+          <div class="item">
+            <mat-icon class="icon"> list </mat-icon>
+            <span> Animação para doação</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/pages/animal/cadastrar">
+          <div class="item">
+            <mat-icon class="icon"> add </mat-icon>
+            <span> Cadastrar animal para adoção </span>
+          </div>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/pages/ong/listar">
+          <div class="item">
+            <mat-icon class="icon"> list </mat-icon>
+            <span> Animação para doação</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/pages/ong/cadastrar">
+          <div class="item">
+            <mat-icon class="icon"> add </mat-icon>
+            <span> Cadastrar animal para adoção </span>
+          </div>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/pages/pessoa/listar">
+          <div class="item">
+            <mat-icon class="icon"> list </mat-icon>
+            <span> Buscar pessoas</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/pages/pessoa/cadastrar">
+          <div class="item">
+            <mat-icon class="icon"> add </mat-icon>
+            <span> Cadastrar Usuário </span>
+          </div>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/pages/evento/listar">
+          <div class="item">
+            <mat-icon class="icon"> list </mat-icon>
+            <span> Eventos</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/pages/evento/cadastrar">
+          <div class="item">
+            <mat-icon class="icon"> add </mat-icon>
+            <span> Cadastrar Evento </span>
+          </div>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content mat-padding">
+      <!-- Conteúdo -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
 
-<!-- Conteúdo -->
-<router-outlet> </router-outlet>
-
-<!-- Rodapé -->
+<!-- FOOTER -->
+<mat-toolbar color="primary" class="mat-elevation-z2 footer-size">
+  <div class="footer-content">
+    <p>ADOÇÃO RESPONSÁVEL DE ANIMAIS DE ESTIMAÇÃO</p>
+    <p>
+      Conectando Doadores, ONGs e Adotantes para um Futuro Melhor para Nossos
+      Amigos Peludos
+    </p>
+  </div>
+</mat-toolbar>

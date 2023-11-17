@@ -1,8 +1,9 @@
-export interface Pessoa{
-    PessoaId : number;
-    Nome : string;
-    Endereco: string;
-    Email: string;
-    CriadoEm: Date;
-    //AnimalId
+export interface Pessoa {
+    pessoaId: number;
+    nome?: string;
+    endereco?: string;
+    numeroTelefone?: string;
+    email?: string;
+    animalId?: number | null;
+    criadoEm: Date;
 }
