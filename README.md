@@ -12,6 +12,9 @@ Após isso, faça os seguintes comandos em seu terminal: <br>
 <code>dotnet ef database update</code> <br>
 <code>dotnet run</code>
 
+<code>Front end</code>
+<code>ng serve -o</code>
+
 <h2>Sobre o Projeto</h2>
 1.  Resumo
 
