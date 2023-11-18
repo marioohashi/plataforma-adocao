@@ -1,7 +1,33 @@
+<!-- animal-listar.component.html -->
 <h1>Animais</h1>
 
-<ul *ngFor="let a of animais">
-  <li>
-    {{ a.nome }}
-  </li>
-</ul>
+<div class="card-container">
+  <div *ngFor="let animal of animais" class="card">
+    <div class="card-header">
+      <h2>ID: {{ animal.animalId }}</h2>
+    </div>
+    <div class="card-body">
+      <p><strong>Nome:</strong> {{ animal.nome }}</p>
+      <p><strong>Idade:</strong> {{ animal.idade }}</p>
+      <p><strong>Espécie:</strong> {{ animal.especie }}</p>
+      <!-- Adicione aqui os outros atributos do animal que deseja exibir -->
+    </div>
+    <div class="card-footer">
+      <mat-card-actions>
+        <div class="card-footer">
+          <button mat-button color="warn" (click)="deletar(animal.animalId)">
+            Deletar
+          </button>
+          <button
+            mat-button
+            color="primary"
+            (click)="atualizar(animal.animalId)"
+          >
+            Atualizar
+          </button>
+          <!-- Adicione aqui o código para a ação de alterar -->
+        </div>
+      </mat-card-actions>
+    </div>
+  </div>
+</div>

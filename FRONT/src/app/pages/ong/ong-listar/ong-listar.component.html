@@ -1,1 +1,32 @@
-<p>ong-listar works!</p>
+<!-- ong-listar.component.html -->
+<h1 class="mat-h1">ONGs</h1>
+
+<div class="card-container">
+  <mat-card *ngFor="let ong of ongs" class="mat-elevation-z4 custom-card">
+    <mat-card-header>
+      <mat-card-title>{{ ong.nome }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Missão:</strong> {{ ong.missao }}</p>
+      <p><strong>Histórico:</strong> {{ ong.historico }}</p>
+      <p>
+        <strong>Informações de Contato:</strong> {{ ong.informacoesContato }}
+      </p>
+      <p>
+        <strong>Criado em:</strong> {{ ong.criadoEm | date : "dd/MM/yyyy" }}
+      </p>
+      <!-- Adicione aqui os outros atributos da ONG que deseja exibir -->
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="card-footer">
+        <button mat-button color="warn" (click)="deletar(ong.ongId)">
+          Deletar
+        </button>
+        <button mat-button color="primary" (click)="atualizar(ong.ongId)">
+          Atualizar
+        </button>
+        <!-- Adicione aqui o código para a ação de alterar -->
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,34 +1,45 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Animal } from 'src/app/models/animal.model';
+// animal-listar.component.ts
+import { HttpClient } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { Animal } from "src/app/models/animal.model";
 
 @Component({
-  selector: 'app-animal-listar',
-  templateUrl: './animal-listar.component.html',
-  styleUrls: ['./animal-listar.component.css']
+  selector: "app-animal-listar",
+  templateUrl: "./animal-listar.component.html",
+  styleUrls: ["./animal-listar.component.css"],
 })
-export class AnimalListarComponent {
-
+export class AnimalListarComponent implements OnInit {
   animais: Animal[] = [];
 
-  constructor(private client: HttpClient){ 
-  }
+  constructor(private client: HttpClient) {}
 
-  ngOnInit() : void{
-    console.log("O componente foi carregado!");
-
-    this.client.get<Animal[]>("https://localhost:7195/api/animal/listar")
+  ngOnInit(): void {
+    this.client
+      .get<Animal[]>("https://localhost:7195/api/animal/listar")
       .subscribe({
-        //Requisição com sucesso
         next: (animais) => {
-          this.animais = animais;
           console.table(animais);
-        }, 
-        //Requisição com erro
+          this.animais = animais;
+        },
         error: (erro) => {
           console.log(erro);
-        }
-      })
+        },
+      });
   }
 
+  deletar(animalId: number) {
+    this.client
+      .delete<Animal[]>(`https://localhost:7195/api/animal/deletar/${animalId}`)
+      .subscribe({
+        next: (animais) => {
+          this.animais = animais;
+        },
+        error: (erro) => {
+          console.log(erro);
+        },
+      });
+  }
+  atualizar(pessoaId: number) {
+    console.log("atualizar");
+  }
 }
