@@ -1,7 +1,8 @@
-// pessoa-cadastrar.component.ts
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
+import { Animal } from "src/app/models/animal.model";
 import { Pessoa } from "src/app/models/pessoa.model";
 
 @Component({
@@ -10,37 +11,57 @@ import { Pessoa } from "src/app/models/pessoa.model";
   styleUrls: ["./pessoa-cadastrar.component.css"],
 })
 export class PessoaCadastrarComponent {
-  novaPessoa: Pessoa = {
-    pessoaId: 0,
-    nome: "",
-    endereco: "",
-    numeroTelefone: "",
-    email: "",
-    animalId: null,
-    criadoEm: new Date(),
-  };
+  nome: string = "";
+  endereco: string = "";
+  numeroTelefone: string = "";
+  email: string = "";
+  animalId: number = 0;
+  animais: Animal[] = [];
 
-  constructor(private client: HttpClient, private snackBar: MatSnackBar) {}
+  constructor(
+    private client: HttpClient,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
-  cadastrarPessoa() {
+  ngOnInit(): void {
     this.client
-      .post<Pessoa>("https://localhost:7195/api/pessoa/cadastrar", this.novaPessoa)
+      .get<Animal[]>("https://localhost:7195/api/animal/listar")
+      .subscribe({
+        next: (animais) => {
+          console.table(animais);
+          this.animais = animais;
+        },
+        error: (erro) => {
+          console.log(erro);
+        },
+      });
+  }
+
+  cadastrar(): void {
+    let pessoa: Pessoa = {
+      pessoaId: 0, // Coloque o valor adequado para pessoaId
+      nome: this.nome,
+      endereco: this.endereco,
+      numeroTelefone: this.numeroTelefone,
+      email: this.email,
+      animalId: this.animalId,
+      criadoEm: new Date(), // Coloque o valor adequado para criadoEm
+    };
+
+    this.client
+      .post<Pessoa>("https://localhost:7195/api/pessoa/cadastrar", pessoa)
       .subscribe({
         next: (pessoa) => {
-          console.log("Pessoa cadastrada com sucesso:", pessoa);
           this.snackBar.open("Pessoa cadastrada com sucesso!", "E-commerce", {
             duration: 1500,
             horizontalPosition: "right",
             verticalPosition: "top",
           });
+          this.router.navigate(["pages/pessoa/listar"]);
         },
         error: (erro) => {
-          console.log("Erro ao cadastrar pessoa:", erro);
-          this.snackBar.open("Erro ao cadastrar pessoa", "E-commerce", {
-            duration: 1500,
-            horizontalPosition: "right",
-            verticalPosition: "top",
-          });
+          console.log(erro);
         },
       });
   }

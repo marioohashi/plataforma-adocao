@@ -2,9 +2,12 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 // Importações do Angular Material
 import { MatButtonModule } from "@angular/material/button";
+import { MatInputModule } from "@angular/material/input";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -59,7 +62,10 @@ import { EventoAtualizarComponent } from "./pages/evento/evento-atualizar/evento
     MatIconModule,
     MatToolbarModule,
     MatCardModule,
+    MatInputModule,
     AppRoutingModule,
+    FormsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

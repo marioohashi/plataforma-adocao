@@ -1,41 +1,28 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Listagem de Produtos</mat-card-title>
-    <mat-card-subtitle>&nbsp;</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="card-container">
-      <div *ngFor="let produto of produtos" class="mat-elevation-z4 card">
-        <mat-card-header>
-          <mat-card-title>{{ produto.nome }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
-          <p><strong>Preço:</strong> {{ produto.preco | currency : "BRL" }}</p>
-          <p><strong>Quantidade:</strong> {{ produto.quantidade }}</p>
-          <p><strong>Categoria:</strong> {{ produto.categoria?.nome }}</p>
-          <p>
-            <strong>Criado em:</strong>
-            {{ produto.criadoEm | date : "dd/MM/yyyy" }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button
-            color="warn"
-            mat-stroked-button
-            (click)="deletar(produto.produtoId)"
-          >
-            Deletar
-          </button>
-          <a
-            color="accent"
-            mat-stroked-button
-            routerLink="/pages/produto/alterar/{{ produto.produtoId }}"
-          >
-            Alterar
-          </a>
-        </mat-card-actions>
-      </div>
+<!-- SeuComponente.component.html -->
+<!-- pessoa-listar.component.html -->
+<h1>Eventos</h1>
+
+<div class="card-container">
+  <div *ngFor="let evento of eventos" class="card">
+    <div class="card-header">
+      <h2>ID: {{ evento.eventoId }}</h2>
     </div>
-  </mat-card-content>
-</mat-card>
+    <div class="card-body">
+      <p><strong>Descrição:</strong> {{ evento.descricao }}</p>
+      <p><strong>ONG:</strong> {{ evento.ong?.nome }}</p>
+      <p>
+        <strong>Data do Evento:</strong>
+        {{ evento.dataEvento | date : "dd/MM/yyyy" }}
+      </p>
+      <p>
+        <strong>Criado Em:</strong>
+        {{ evento.criadoEm | date : "dd/MM/yyyy HH:mm:ss" }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <button (click)="deletar(evento.eventoId)">Deletar</button>
+      <button (click)="atualizar(evento.eventoId)">atualizar</button>
+      <!-- Adicione aqui o código para a ação de alterar -->
+    </div>
+  </div>
+</div>

@@ -1,41 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Evento } from "src/app/models/evento.model";
+import { Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-evento-listar",
-  template: `
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Descrição</th>
-          <th>ONG</th>
-          <th>Data do Evento</th>
-          <th>Criado Em</th>
-          <th>Deletar</th>
-          <th>Alterar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let evento of eventos">
-          <td>{{ evento.eventoId }}</td>
-          <td>{{ evento.nome }}</td>
-          <td>{{ evento.descricao }}</td>
-          <td>{{ evento.ong?.nome }}</td>
-          <td>{{ evento.dataEvento | date: 'dd/MM/yyyy' }}</td>
-          <td>{{ evento.criadoEm | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
-          <td>
-            <button (click)="deletar(evento.eventoId)">Deletar</button>
-          </td>
-          <td>
-            <!-- Adicione aqui o código para a ação de alterar -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  `,
+  templateUrl: "./evento-listar.component.html",
   styleUrls: ["./evento-listar.component.css"],
 })
 export class EventoListarComponent implements OnInit {
@@ -51,7 +22,11 @@ export class EventoListarComponent implements OnInit {
   ];
   eventos: Evento[] = [];
 
-  constructor(private client: HttpClient) {
+  constructor(
+    private client: HttpClient,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {
     // Um problema de CORS ao fazer uma requisição para a nossa API
   }
 
@@ -69,18 +44,42 @@ export class EventoListarComponent implements OnInit {
       });
   }
 
-  deletar(eventoId: number) {
-    this.client
-      .delete<Evento[]>(
-        `https://localhost:7195/api/evento/deletar/${eventoId}`
-      )
-      .subscribe({
-        next: (eventos) => {
-          this.eventos = eventos;
-        },
-        error: (erro) => {
-          console.log(erro);
-        },
-      });
+  deletar(eventoId: number): void {
+    if (confirm("Tem certeza que deseja deletar esse evento?")) {
+      this.client
+        .delete(`https://localhost:7195/api/evento/delete/${eventoId}`)
+        .subscribe({
+          // Requisição com sucesso
+          next: () => {
+            // Remove o evento da lista local
+            this.eventos = this.eventos.filter(
+              (evento) => evento.eventoId !== eventoId
+            );
+
+            this.snackBar.open("Evento deletado com sucesso!", "Deletado(a)", {
+              duration: 1500,
+              horizontalPosition: "right",
+              verticalPosition: "top",
+            });
+          },
+          // Tratamento de erro
+          error: (erro) => {
+            console.log(erro);
+            this.snackBar.open(
+              "Erro ao deletar esse evento.",
+              "Tente novamente",
+              {
+                duration: 1500,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+              }
+            );
+          },
+        });
+    }
+  }
+
+  atualizar(eventoId: number) {
+    this.router.navigate(["/pages/evento/atualizar", eventoId]);
   }
 }
