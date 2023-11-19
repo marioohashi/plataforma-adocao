@@ -12,7 +12,7 @@ Content-Type: application/json
     "Nome" : "Evento teste",
     "Descricao" : "Descricao do evento teste",
     "DataEvento" : "2023-11-04T22:02:25.551423",
-    "ONGId" : 3
+    "ONGId" : 15
 }
 
 ### Atualizar evento
