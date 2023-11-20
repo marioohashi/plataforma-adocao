@@ -1,0 +1,120 @@
+<!-- login.component.html -->
+<div class="login-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{
+        registrationType === "pessoa" ? "Registro de Pessoa" : "Registro de ONG"
+      }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Email"
+            [(ngModel)]="user.email"
+            name="email"
+            type="email"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Password"
+            [(ngModel)]="user.password"
+            name="password"
+            type="password"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Nome"
+            [(ngModel)]="user.nome"
+            name="nome"
+            *ngIf="registrationType === 'pessoa'"
+            required
+          />
+          <input
+            matInput
+            placeholder="Nome da ONG"
+            [(ngModel)]="ong.nome"
+            name="ongNome"
+            *ngIf="registrationType === 'ong'"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Endereço"
+            [(ngModel)]="user.endereco"
+            name="endereco"
+            *ngIf="registrationType === 'pessoa'"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Número de Telefone"
+            [(ngModel)]="user.numeroTelefone"
+            name="numeroTelefone"
+            *ngIf="registrationType === 'pessoa'"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Missão da ONG"
+            [(ngModel)]="ong.missao"
+            name="ongMissao"
+            *ngIf="registrationType === 'ong'"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea
+            matInput
+            placeholder="Histórico da ONG"
+            [(ngModel)]="ong.historico"
+            name="ongHistorico"
+            *ngIf="registrationType === 'ong'"
+            required
+          ></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          {{
+            registrationType === "pessoa" ? "Registrar Pessoa" : "Registrar ONG"
+          }}
+        </button>
+      </form>
+
+      <p
+        class="toggle-link"
+        (click)="toggleMode('pessoa')"
+        *ngIf="registrationType === 'ong'"
+      >
+        Registrar como Pessoa
+      </p>
+      <p
+        class="toggle-link"
+        (click)="toggleMode('ong')"
+        *ngIf="registrationType === 'pessoa'"
+      >
+        Registrar como ONG
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

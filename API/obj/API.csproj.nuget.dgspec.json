@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sophia/Desktop/plataforma-adocao/API/API.csproj": {}
+    "/Users/marioohashi/Desktop/Mesa - MacBook Pro de Mario/Trabalho DSV/plataforma-adocao/API/API.csproj": {}
   },
   "projects": {
-    "/Users/sophia/Desktop/plataforma-adocao/API/API.csproj": {
+    "/Users/marioohashi/Desktop/Mesa - MacBook Pro de Mario/Trabalho DSV/plataforma-adocao/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sophia/Desktop/plataforma-adocao/API/API.csproj",
+        "projectUniqueName": "/Users/marioohashi/Desktop/Mesa - MacBook Pro de Mario/Trabalho DSV/plataforma-adocao/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/Users/sophia/Desktop/plataforma-adocao/API/API.csproj",
-        "packagesPath": "/Users/sophia/.nuget/packages/",
-        "outputPath": "/Users/sophia/Desktop/plataforma-adocao/API/obj/",
+        "projectPath": "/Users/marioohashi/Desktop/Mesa - MacBook Pro de Mario/Trabalho DSV/plataforma-adocao/API/API.csproj",
+        "packagesPath": "/Users/marioohashi/.nuget/packages/",
+        "outputPath": "/Users/marioohashi/Desktop/Mesa - MacBook Pro de Mario/Trabalho DSV/plataforma-adocao/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/sophia/.nuget/NuGet/NuGet.Config"
+          "/Users/marioohashi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

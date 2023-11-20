@@ -86,14 +86,12 @@ namespace API
                     return NotFound();
                 }
 
-                // Atualizar as propriedades da pessoaExistente com os valores da pessoaAtualizada
-
                 pessoaExistente.Nome = pessoaAtualizada.Nome;
+                pessoaExistente.Email = pessoaAtualizada.Email;
+                pessoaExistente.Password = pessoaAtualizada.Password;
                 pessoaExistente.Endereco = pessoaAtualizada.Endereco;
                 pessoaExistente.NumeroTelefone = pessoaAtualizada.NumeroTelefone;
                 pessoaExistente.Email = pessoaAtualizada.Email;
-
-                // Adicione outras propriedades que você deseja atualizar
 
                 _ctx.SaveChanges();
 

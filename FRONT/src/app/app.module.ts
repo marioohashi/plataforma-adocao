@@ -33,6 +33,7 @@ import { OngAtualizarComponent } from "./pages/ong/ong-atualizar/ong-atualizar.c
 import { AnimalAtualizarComponent } from "./pages/animal/animal-atualizar/animal-atualizar.component";
 import { PessoaAtualizarComponent } from "./pages/pessoa/pessoa-atualizar/pessoa-atualizar.component";
 import { EventoAtualizarComponent } from "./pages/evento/evento-atualizar/evento-atualizar.component";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { EventoAtualizarComponent } from "./pages/evento/evento-atualizar/evento
     AnimalAtualizarComponent,
     PessoaAtualizarComponent,
     EventoAtualizarComponent,
+    LoginComponent,
   ],
   imports: [
     HttpClientModule,

@@ -3,7 +3,6 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace API;
 
 [ApiController]
@@ -91,6 +90,8 @@ public class ONGController : ControllerBase
             // Atualizar as propriedades da ongExistente com os valores da ongAtualizada
 
             ongExistente.Nome = ongAtualizada.Nome;
+            ongExistente.Email = ongAtualizada.Email;
+            ongExistente.Password = ongAtualizada.Password;
             ongExistente.Missao = ongAtualizada.Missao;
             ongExistente.Historico = ongAtualizada.Historico;
             ongExistente.InformacoesContato = ongAtualizada.InformacoesContato;

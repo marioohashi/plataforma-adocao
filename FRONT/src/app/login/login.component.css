@@ -1,0 +1,29 @@
+/* login.component.css */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+mat-card {
+  max-width: 400px;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.toggle-link {
+  cursor: pointer;
+  color: #1976d2;
+  text-align: center;
+}

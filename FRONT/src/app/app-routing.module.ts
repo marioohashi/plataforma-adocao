@@ -12,12 +12,17 @@ import { PessoaCadastrarComponent } from './pages/pessoa/pessoa-cadastrar/pessoa
 import { OngAtualizarComponent } from './pages/ong/ong-atualizar/ong-atualizar.component';
 import { AnimalAtualizarComponent } from './pages/animal/animal-atualizar/animal-atualizar.component';
 import { PessoaAtualizarComponent } from './pages/pessoa/pessoa-atualizar/pessoa-atualizar.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pages/pessoa/listar',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'pages/evento/listar',
