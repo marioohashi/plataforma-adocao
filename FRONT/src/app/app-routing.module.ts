@@ -64,11 +64,10 @@ const routes: Routes = [
     component: PessoaCadastrarComponent
   },
   {
-    path: 'pages/pessoa/atualizar',
+    path: 'pages/pessoa/atualizar/:id',
     component: PessoaAtualizarComponent
   }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

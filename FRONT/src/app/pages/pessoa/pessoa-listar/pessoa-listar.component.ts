@@ -71,6 +71,6 @@ export class PessoaListarComponent implements OnInit {
     }
   }
   atualizar(pessoaId: number) {
-    this.router.navigate(["/pages/pessoa/atualizar", pessoaId]);
+    this.router.navigate(["pages/pessoa/atualizar", pessoaId]);
   }
 }

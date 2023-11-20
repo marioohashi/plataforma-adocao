@@ -56,6 +56,26 @@ public class ONGController : ControllerBase
         }
     }
 
+    // GET: api/ong/buscar/{id}
+    [HttpGet]
+    [Route("buscarid/{id}")]
+    public IActionResult BuscarId([FromRoute] int id)
+    {
+        try
+        {
+            ONG? ongCadastrada = _ctx.ONGs.FirstOrDefault(x => x.ONGId == id);
+            if (ongCadastrada != null)
+            {
+                return Ok(ongCadastrada);
+            }
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
     //POST: api/ong/cadastrar
     [HttpPost]
     [Route("cadastrar")]

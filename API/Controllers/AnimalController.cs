@@ -59,6 +59,25 @@ public class AnimalController : ControllerBase
         }
     }
 
+    // GET: api/animal/buscar/{id}
+    [HttpGet]
+    [Route("buscarid/{id}")]
+    public IActionResult BuscarId([FromRoute] int id)
+    {
+        try
+        {
+            Animal? animalCadastrada = _ctx.Animais.FirstOrDefault(x => x.AnimalId == id);
+            if (animalCadastrada != null)
+            {
+                return Ok(animalCadastrada);
+            }
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
     //POST: api/animal/cadastrar
     [HttpPost]
     [Route("cadastrar")]
