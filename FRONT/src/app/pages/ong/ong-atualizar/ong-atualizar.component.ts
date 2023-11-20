@@ -2,8 +2,10 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Evento } from "src/app/models/evento.model";
 import { Animal } from "src/app/models/animal.model";
 import { ONG } from "src/app/models/ong.model";
+
 
 @Component({
   selector: "app-ong-atualizar",
@@ -35,7 +37,7 @@ export class OngAtualizarComponent implements OnInit {
 
   carregarDadosOng(): void {
     this.client
-      .get<ONG>(`https://localhost:7195/api/ong/buscarong/${this.ongId}`)
+      .get<ONG>(`https://localhost:7195/api/ong/buscarid/${this.ongId}`)
       .subscribe({
         next: (ong) => {
           this.ong = ong;

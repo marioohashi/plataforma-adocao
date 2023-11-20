@@ -1,11 +1,10 @@
-<!-- SeuComponente.component.html -->
-<!-- pessoa-listar.component.html -->
+<!-- evento-listar.component.html -->
 <h1>Eventos</h1>
 
 <div class="card-container">
   <div *ngFor="let evento of eventos" class="card">
     <div class="card-header">
-      <h2>ID: {{ evento.eventoId }}</h2>
+      <h2>ID: {{ evento.nome }}</h2>
     </div>
     <div class="card-body">
       <p><strong>Descrição:</strong> {{ evento.descricao }}</p>
@@ -18,11 +17,11 @@
         <strong>Criado Em:</strong>
         {{ evento.criadoEm | date : "dd/MM/yyyy HH:mm:ss" }}
       </p>
+      <p><strong>Id:</strong> {{ evento.eventoId }}</p>
     </div>
     <div class="card-footer">
       <button (click)="deletar(evento.eventoId)">Deletar</button>
       <button (click)="atualizar(evento.eventoId)">atualizar</button>
-      <!-- Adicione aqui o código para a ação de alterar -->
     </div>
   </div>
 </div>

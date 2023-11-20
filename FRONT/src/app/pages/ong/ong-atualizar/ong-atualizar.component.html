@@ -1,56 +1,44 @@
 <div class="container">
   <h2>Atualizar ONG</h2>
-  <form (submit)="atualizar()" #pessoaForm="ngForm">
+  <form (submit)="atualizar()" #ongForm="ngForm">
     <div class="form-group">
       <label for="nome">Nome:</label>
       <input type="text" id="nome" [(ngModel)]="nome" name="nome" required />
     </div>
     <div class="form-group">
-      <label for="endereco">Endereço:</label>
-      <input
-        type="text"
-        id="endereco"
-        [(ngModel)]="endereco"
-        name="endereco"
+      <label for="missao">Missão:</label>
+      <textarea
+        id="missao"
+        [(ngModel)]="missao"
+        name="missao"
         required
-      />
+      ></textarea>
     </div>
     <div class="form-group">
-      <label for="numeroTelefone">Número de Telefone:</label>
-      <input
-        type="text"
-        id="numeroTelefone"
-        [(ngModel)]="numeroTelefone"
-        name="numeroTelefone"
+      <label for="historico">Histórico:</label>
+      <textarea
+        id="historico"
+        [(ngModel)]="historico"
+        name="historico"
         required
-      />
+      ></textarea>
     </div>
     <div class="form-group">
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        [(ngModel)]="email"
-        [value]="email"
-        name="email"
+      <label for="informacoesContato">Informações de Contato:</label>
+      <textarea
+        id="informacoesContato"
+        [(ngModel)]="informacoesContato"
+        name="informacoesContato"
         required
-      />
-    </div>
-    <div class="form-group">
-      <label for="animalId">Animal:</label>
-      <select id="animalId" [(ngModel)]="animalId" name="animalId" required>
-        <option *ngFor="let animal of animais" [value]="animal.animalId">
-          {{ animal.nome }}
-        </option>
-      </select>
+      ></textarea>
     </div>
     <button
       type="submit"
       mat-stroked-button
       color="primary"
-      [disabled]="!pessoaForm.form.valid"
+      [disabled]="!ongForm.form.valid"
     >
-      Atualizar
+      Salvar
     </button>
   </form>
 </div>

@@ -28,7 +28,7 @@ const routes: Routes = [
     component: EventoCadastrarComponent
   },
   {
-    path: 'pages/evento/atualizar',
+    path: 'pages/evento/atualizar/:id',
     component: EventoAtualizarComponent
   },
   {
@@ -40,7 +40,7 @@ const routes: Routes = [
     component: AnimalCadastrarComponent
   },
   {
-    path: 'pages/animal/atualizar',
+    path: 'pages/animal/atualizar/:id',
     component: AnimalAtualizarComponent
   },
   {
@@ -52,7 +52,7 @@ const routes: Routes = [
     component: OngCadastrarComponent
   },
   {
-    path: 'pages/ong/atualizar',
+    path: 'pages/ong/atualizar/:id',
     component: OngAtualizarComponent
   },
   {

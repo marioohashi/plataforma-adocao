@@ -57,10 +57,6 @@ export class OngListarComponent implements OnInit {
   }
 
   atualizar(ongId: number) {
-    // Implemente a navegação para a página de atualização ou lógica necessária
-    // Exemplo de navegação para uma rota chamada '/ong/atualizar/:ongId'
-    // Certifique-se de configurar suas rotas adequadamente
-    // this.router.navigate(['/ong/atualizar', ongId]);
-    console.log("ONG Atualizada");
+    this.router.navigate(["pages/ong/atualizar", ongId]);
   }
 }
