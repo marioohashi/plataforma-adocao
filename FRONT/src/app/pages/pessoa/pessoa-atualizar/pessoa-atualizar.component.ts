@@ -1,3 +1,5 @@
+// pessoa-atualizar.component.ts
+
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -17,6 +19,8 @@ export class PessoaAtualizarComponent implements OnInit {
   endereco: string = "";
   numeroTelefone: string = "";
   email: string = "";
+  foto: string = "";
+  video: string = "";
   animalId: number = 0;
   animais: Animal[] = [];
 

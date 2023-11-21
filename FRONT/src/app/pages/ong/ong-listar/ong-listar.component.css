@@ -1,4 +1,4 @@
-/* Adicione ao seu arquivo CSS existente ou crie um novo */
+/* shared-styles.css */
 
 .card-container {
   display: flex;
@@ -35,25 +35,4 @@
 
 button {
   margin-top: 5px;
-}
-/* ong-listar.component.css */
-.mat-h1 {
-  color: #1976d2; /* Cor primária do Material Design para o texto */
-  margin-bottom: 20px;
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.custom-card {
-  width: 300px;
-}
-
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
 }

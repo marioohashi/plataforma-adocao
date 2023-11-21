@@ -12,8 +12,8 @@ import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: "app-pessoa-listar",
-  templateUrl: "./pessoa-listar.component.html", // Referenciando o novo arquivo HTML
-  styleUrls: ["./pessoa-listar.component.css"],
+  templateUrl: "./pessoa-listar.component.html",
+  styleUrls: ["./pessoa-listar.component.css", "../../../app.component.css"],
 })
 export class PessoaListarComponent implements OnInit {
   pessoas: Pessoa[] = [];

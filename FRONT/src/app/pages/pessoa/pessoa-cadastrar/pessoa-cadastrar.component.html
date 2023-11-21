@@ -1,28 +1,54 @@
 <div class="container">
-  <h2>Cadastrar Pessoa</h2>
   <form (submit)="cadastrar()" #pessoaForm="ngForm">
     <div class="form-group">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" [(ngModel)]="nome" name="nome" required>
+      <input type="text" id="nome" [(ngModel)]="nome" name="nome" required />
     </div>
     <div class="form-group">
       <label for="endereco">Endereço:</label>
-      <input type="text" id="endereco" [(ngModel)]="endereco" name="endereco" required>
+      <input
+        type="text"
+        id="endereco"
+        [(ngModel)]="endereco"
+        name="endereco"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="numeroTelefone">Número de Telefone:</label>
-      <input type="text" id="numeroTelefone" [(ngModel)]="numeroTelefone" name="numeroTelefone" required>
+      <input
+        type="text"
+        id="numeroTelefone"
+        [(ngModel)]="numeroTelefone"
+        name="numeroTelefone"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" required>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="animalId">Animal:</label>
       <select id="animalId" [(ngModel)]="animalId" name="animalId" required>
-        <option *ngFor="let animal of animais" [value]="animal.animalId">{{ animal.nome }}</option>
+        <option *ngFor="let animal of animais" [value]="animal.animalId">
+          {{ animal.nome }}
+        </option>
       </select>
     </div>
-    <button type="submit" mat-stroked-button color="primary" [disabled]="!pessoaForm.form.valid">Cadastrar</button>
+    <button
+      type="submit"
+      mat-stroked-button
+      color="primary"
+      [disabled]="!pessoaForm.form.valid"
+    >
+      Cadastrar
+    </button>
   </form>
 </div>

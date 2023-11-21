@@ -1,16 +1,21 @@
 <!-- animal-listar.component.html -->
-<h1>Animais</h1>
-
 <div class="card-container">
   <div *ngFor="let animal of animais" class="card">
     <div class="card-header">
-      <h2>ID: {{ animal.animalId }}</h2>
+      <h2>{{ animal.nome }}</h2>
     </div>
     <div class="card-body">
-      <p><strong>Nome:</strong> {{ animal.nome }}</p>
+      <p><strong>ID:</strong> {{ animal.animalId }}</p>
       <p><strong>Idade:</strong> {{ animal.idade }}</p>
       <p><strong>Espécie:</strong> {{ animal.especie }}</p>
-      <!-- Adicione aqui os outros atributos do animal que deseja exibir -->
+      <p><strong>Raça:</strong> {{ animal.raca }}</p>
+      <p><strong>Porte:</strong> {{ animal.porte }}</p>
+      <p><strong>Comportamento:</strong> {{ animal.comportamento }}</p>
+      <p><strong>Descrição:</strong> {{ animal.descricao }}</p>
+      <p><strong>Foto:</strong> {{ animal.foto }}</p>
+      <p><strong>Video:</strong> {{ animal.video }}</p>
+      <p><strong>ONG:</strong> {{ animal.ong?.nome }}</p>
+      <!-- You can add more attributes here based on your model -->
     </div>
     <div class="card-footer">
       <mat-card-actions>
@@ -25,7 +30,7 @@
           >
             Atualizar
           </button>
-          <!-- Adicione aqui o código para a ação de alterar -->
+          <!-- Add code here for other actions if needed -->
         </div>
       </mat-card-actions>
     </div>

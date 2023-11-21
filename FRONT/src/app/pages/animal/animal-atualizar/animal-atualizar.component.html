@@ -1,6 +1,6 @@
-<!-- animal-cadastrar.component.html -->
+<!-- animal-atualizar.component.html -->
 <div class="container">
-  <form (submit)="cadastrar()" #animalForm="ngForm">
+  <form (submit)="atualizar()" #animalForm="ngForm">
     <div class="form-group">
       <label for="nome">Nome:</label>
       <input type="text" id="nome" [(ngModel)]="nome" name="nome" required />
@@ -58,17 +58,18 @@
       <label for="ongId">ONG:</label>
       <select id="ongId" [(ngModel)]="ongId" name="ongId" required>
         <option *ngFor="let ong of ongs" [value]="ong.ongId">
-          {{ ong.nome }}
+          {{ ong.ongId }}
         </option>
       </select>
     </div>
+
     <button
       type="submit"
       mat-stroked-button
       color="primary"
       [disabled]="!animalForm.form.valid"
     >
-      Cadastrar
+      Atualizar
     </button>
   </form>
 </div>
