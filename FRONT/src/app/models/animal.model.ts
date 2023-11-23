@@ -1,3 +1,4 @@
+// animal.model.ts
 import { ONG } from './ong.model';
 
 export interface Animal {

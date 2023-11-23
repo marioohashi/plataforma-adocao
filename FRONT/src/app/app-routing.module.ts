@@ -21,54 +21,77 @@ const routes: Routes = [
   },
   {
     path: 'pages/evento/listar',
-    component: EventoListarComponent
+    component: EventoListarComponent,
+        data: { title: 'Eventos' }
+
   },
   {
     path: 'pages/evento/cadastrar',
-    component: EventoCadastrarComponent
+    component: EventoCadastrarComponent,
+        data: { title: 'Cadastrar Evento' }
+
   },
   {
-    path: 'pages/evento/atualizar',
-    component: EventoAtualizarComponent
+    path: 'pages/evento/atualizar/:id',
+    component: EventoAtualizarComponent,
+        data: { title: 'Atualizar Evento' }
+
   },
   {
     path: 'pages/animal/listar',
-    component: AnimalListarComponent
+    component: AnimalListarComponent,
+        data: { title: 'Animais para adoção' }
+
   },
   {
     path: 'pages/animal/cadastrar',
-    component: AnimalCadastrarComponent
+    component: AnimalCadastrarComponent,
+        data: { title: 'Cadastrar Animais' }
+
   },
   {
-    path: 'pages/animal/atualizar',
-    component: AnimalAtualizarComponent
+    path: 'pages/animal/atualizar/:id',
+    component: AnimalAtualizarComponent,
+        data: { title: 'Atualizar Animais' }
+
   },
   {
     path: 'pages/ong/listar',
-    component: OngListarComponent
+    component: OngListarComponent,
+        data: { title: 'ONGs' }
+
   },
   {
     path: 'pages/ong/cadastrar',
-    component: OngCadastrarComponent
+    component: OngCadastrarComponent,
+        data: { title: 'Cadastrar ONG' }
+
   },
   {
-    path: 'pages/ong/atualizar',
-    component: OngAtualizarComponent
+    path: 'pages/ong/atualizar/:id',
+    component: OngAtualizarComponent,
+        data: { title: 'Atualizar ONG' }
+
   },
   {
     path: 'pages/pessoa/listar',
-    component: PessoaListarComponent
+    component: PessoaListarComponent,
+        data: { title: 'Pessoas' }
+
   },
   {
     path: 'pages/pessoa/cadastrar',
-    component: PessoaCadastrarComponent
+    component: PessoaCadastrarComponent,
+        data: { title: 'Cadastrar Pessoa' }
+
   },
   {
-    path: 'pages/pessoa/atualizar',
-    component: PessoaAtualizarComponent
+    path: 'pages/pessoa/atualizar/:id',
+    component: PessoaAtualizarComponent,
+        data: { title: 'Animais para adoção' }
+
   }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

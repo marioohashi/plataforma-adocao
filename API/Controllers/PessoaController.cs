@@ -55,6 +55,26 @@ namespace API
             }
         }
 
+        // GET: api/pessoa/buscar/{id}
+        [HttpGet]
+        [Route("buscarpessoa/{id}")]
+        public IActionResult BuscarPessoa([FromRoute] int id)
+        {
+            try
+            {
+                Pessoa? pessoaCadastrada = _ctx.Pessoas.FirstOrDefault(x => x.PessoaId == id);
+                if (pessoaCadastrada != null)
+                {
+                    return Ok(pessoaCadastrada);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         // POST: api/pessoa/cadastrar
         [HttpPost]
         [Route("cadastrar")]

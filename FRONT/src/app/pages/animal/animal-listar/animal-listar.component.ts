@@ -65,6 +65,6 @@ export class AnimalListarComponent implements OnInit {
   }
 
   atualizar(animalId: number) {
-    console.log("atualizar");
+    this.router.navigate(["pages/animal/atualizar", animalId]);
   }
 }

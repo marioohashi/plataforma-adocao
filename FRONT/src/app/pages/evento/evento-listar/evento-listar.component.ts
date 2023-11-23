@@ -80,6 +80,6 @@ export class EventoListarComponent implements OnInit {
   }
 
   atualizar(eventoId: number) {
-    this.router.navigate(["/pages/evento/atualizar", eventoId]);
+    this.router.navigate(["pages/evento/atualizar", eventoId]);
   }
 }

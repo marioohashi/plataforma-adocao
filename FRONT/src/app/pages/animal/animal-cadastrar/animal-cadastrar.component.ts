@@ -23,7 +23,7 @@ export class AnimalCadastrarComponent {
   video: string = "";
   ongId: number = 0;
   ong: ONG | undefined;
-  ongs: ONG[] = []; // Você pode inicializar como undefined ou preenchê-lo conforme necessário
+  ongs: ONG[] = [];
 
   constructor(
     private client: HttpClient,
@@ -34,7 +34,6 @@ export class AnimalCadastrarComponent {
   ngOnInit(): void {
     this.client.get<ONG[]>("https://localhost:7195/api/ong/listar").subscribe({
       next: (ongs) => {
-        console.table(ongs);
         this.ongs = ongs;
       },
       error: (erro) => {

@@ -54,6 +54,26 @@ public class EventoController : ControllerBase
         }
     }
 
+    // GET: api/evento/buscar/{id}
+    [HttpGet]
+    [Route("buscarid/{id}")]
+    public IActionResult BuscarId([FromRoute] int id)
+    {
+        try
+        {
+            Evento? eventoCadastrada = _ctx.Eventos.FirstOrDefault(x => x.EventoId == id);
+            if (eventoCadastrada != null)
+            {
+                return Ok(eventoCadastrada);
+            }
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
     //POST: api/evento/cadastrar
     [HttpPost]
     [Route("cadastrar")]
