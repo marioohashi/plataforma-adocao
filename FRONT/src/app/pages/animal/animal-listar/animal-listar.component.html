@@ -12,8 +12,18 @@
       <p><strong>Porte:</strong> {{ animal.porte }}</p>
       <p><strong>Comportamento:</strong> {{ animal.comportamento }}</p>
       <p><strong>Descrição:</strong> {{ animal.descricao }}</p>
-      <p><strong>Foto:</strong> {{ animal.foto }}</p>
-      <p><strong>Video:</strong> {{ animal.video }}</p>
+      <p>
+        <strong>Foto:</strong>
+        <a href="{{ animal.foto }}" target="_blank" rel="noopener noreferrer">
+          Clique para ver a foto!
+        </a>
+      </p>
+      <p>
+        <strong>Video:</strong>
+        <a href="{{ animal.video }}" target="_blank" rel="noopener noreferrer">
+          Clique para ver o vídeo</a
+        >
+      </p>
       <p><strong>ONG:</strong> {{ animal.ong?.nome }}</p>
       <!-- You can add more attributes here based on your model -->
     </div>

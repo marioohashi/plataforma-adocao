@@ -2,7 +2,7 @@
 <div class="card-container">
   <div *ngFor="let evento of eventos" class="card">
     <div class="card-header">
-      <h2>ID: {{ evento.nome }}</h2>
+      <h2>{{ evento.nome }}</h2>
     </div>
     <div class="card-body">
       <p><strong>Descrição:</strong> {{ evento.descricao }}</p>
@@ -13,13 +13,17 @@
       </p>
       <p>
         <strong>Criado Em:</strong>
-        {{ evento.criadoEm | date : "dd/MM/yyyy HH:mm:ss" }}
+        {{ evento.criadoEm | date : "dd/MM/yyyy" }}
       </p>
-      <p><strong>Id:</strong> {{ evento.eventoId }}</p>
+      <p><strong>ID:</strong> {{ evento.eventoId }}</p>
     </div>
     <div class="card-footer">
-      <button (click)="deletar(evento.eventoId)">Deletar</button>
-      <button (click)="atualizar(evento.eventoId)">atualizar</button>
+      <button mat-button color="warn" (click)="deletar(evento.eventoId)">
+        Deletar
+      </button>
+      <button mat-button color="primary" (click)="atualizar(evento.eventoId)">
+        Atualizar
+      </button>
     </div>
   </div>
 </div>

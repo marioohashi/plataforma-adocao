@@ -16,8 +16,12 @@
       </p>
     </div>
     <div class="card-footer">
-      <button (click)="deletar(pessoa.pessoaId)">Deletar</button>
-      <button (click)="atualizar(pessoa.pessoaId)">atualizar</button>
+      <button mat-button color="warn" (click)="deletar(pessoa.pessoaId)">
+        Deletar
+      </button>
+      <button mat-button color="primary" (click)="atualizar(pessoa.pessoaId)">
+        Atualizar
+      </button>
       <!-- Adicione aqui o código para a ação de alterar -->
     </div>
   </div>
