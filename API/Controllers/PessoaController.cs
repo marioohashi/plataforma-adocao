@@ -2,9 +2,6 @@
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace API
 {
@@ -26,7 +23,7 @@ namespace API
         {
             try
             {
-                List<Pessoa> pessoas = _ctx.Pessoas.ToList();
+                List<Pessoa> pessoas = _ctx.Pessoas.Include(x => x.Animal).ToList();
                 return pessoas.Count == 0 ? NotFound() : Ok(pessoas);
             }
             catch (Exception e)
@@ -85,6 +82,9 @@ namespace API
         {
             try
             {
+                Animal? animal =
+                    _ctx.Animais.Find(pessoa.AnimalId);
+                pessoa.Animal = animal;
                 _ctx.Pessoas.Add(pessoa);
                 _ctx.SaveChanges();
                 return Created("", pessoa);
