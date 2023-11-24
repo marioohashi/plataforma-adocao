@@ -15,7 +15,7 @@
         <strong>Criado Em:</strong>
         {{ evento.criadoEm | date : "dd/MM/yyyy" }}
       </p>
-      <p><strong>ID:</strong> {{ evento.eventoId }}</p>
+      <p><strong>ID do evento:</strong> {{ evento.eventoId }}</p>
     </div>
     <div class="card-footer">
       <button mat-button color="warn" (click)="deletar(evento.eventoId)">

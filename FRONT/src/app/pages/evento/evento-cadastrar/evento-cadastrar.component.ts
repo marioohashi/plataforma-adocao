@@ -23,7 +23,9 @@ export class EventoCadastrarComponent {
   ) {}
 
   ngOnInit(): void {
-    this.client.get<ONG[]>("https://localhost:7195/api/ong/listar").subscribe({
+    this.client
+    .get<ONG[]>("https://localhost:7195/api/ong/listar")
+    .subscribe({
       next: (ongs) => {
         console.table(ongs);
         this.ongs = ongs;
@@ -35,7 +37,6 @@ export class EventoCadastrarComponent {
   }
 
   cadastrar(): void {
-    // Verifica se a data do evento é posterior à data atual
     const dataAtual = new Date().toISOString().split("T")[0];
     if (this.dataEvento < dataAtual) {
       this.snackBar.open(
@@ -50,7 +51,6 @@ export class EventoCadastrarComponent {
       return;
     }
 
-    // Restante do código para o cadastro do evento
     let evento = {
       nome: this.nome,
       descricao: this.descricao,

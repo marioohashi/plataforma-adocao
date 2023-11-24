@@ -3,12 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { Pessoa } from "src/app/models/pessoa.model";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { MatMenuModule } from "@angular/material/menu";
-import { MatButtonModule } from "@angular/material/button";
-import { MatDividerModule } from "@angular/material/divider";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatListModule } from "@angular/material/list";
-import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: "app-pessoa-listar",

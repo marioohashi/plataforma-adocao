@@ -58,7 +58,7 @@
       <label for="ongId">ONG:</label>
       <select id="ongId" [(ngModel)]="ongId" name="ongId" required>
         <option *ngFor="let ong of ongs" [value]="ong.ongId">
-          {{ ong.ongId }}
+          {{ ong.nome }}
         </option>
       </select>
     </div>

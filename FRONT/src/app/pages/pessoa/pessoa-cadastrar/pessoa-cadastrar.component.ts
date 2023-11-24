@@ -40,17 +40,17 @@ export class PessoaCadastrarComponent {
 
   cadastrar(): void {
     let pessoa: Pessoa = {
-      pessoaId: 0, // Coloque o valor adequado para pessoaId
+      pessoaId: 0,
       nome: this.nome,
       endereco: this.endereco,
       numeroTelefone: this.numeroTelefone,
       email: this.email,
       animalId: this.animalId,
-      criadoEm: new Date(), // Coloque o valor adequado para criadoEm
+      criadoEm: new Date(),
     };
 
     this.client
-      .post<Pessoa>("https://localhost:7195/api/pessoa/cadastrar", pessoa)
+      .post("https://localhost:7195/api/pessoa/cadastrar", pessoa)
       .subscribe({
         next: (pessoa) => {
           this.snackBar.open("Pessoa cadastrada com sucesso!", "E-commerce", {

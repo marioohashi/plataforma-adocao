@@ -10,25 +10,13 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ["./evento-listar.component.css"],
 })
 export class EventoListarComponent implements OnInit {
-  colunasTabela: string[] = [
-    "eventoId",
-    "nome",
-    "descricao",
-    "ong",
-    "dataEvento",
-    "criadoEm",
-    "deletar",
-    "alterar",
-  ];
   eventos: Evento[] = [];
 
   constructor(
     private client: HttpClient,
     private snackBar: MatSnackBar,
     private router: Router
-  ) {
-    // Um problema de CORS ao fazer uma requisição para a nossa API
-  }
+  ) {}
 
   ngOnInit(): void {
     this.client

@@ -33,6 +33,18 @@ export class EventoAtualizarComponent implements OnInit {
       this.eventoId = +params['id'];
       this.carregarDadosOng();
     });
+    
+    this.client
+    .get<ONG[]>("https://localhost:7195/api/ong/listar")
+    .subscribe({
+      next: (ongs) => {
+        this.ongs = ongs;
+      },
+      error: (erro) => {
+        console.log(erro);
+      },
+    });
+
   }
 
   carregarDadosOng(): void {
@@ -40,11 +52,12 @@ export class EventoAtualizarComponent implements OnInit {
       .get<Evento>(`https://localhost:7195/api/evento/buscarid/${this.eventoId}`)
       .subscribe({
         next: (evento) => {
+          console.table(evento);
           this.evento = evento;
           this.nome = evento.nome || '';  // Utilizando operador lógico OU para evitar valores nulos ou indefinidos
           this.descricao = evento.descricao || '';
           this.criadoEm = evento.criadoEm || '';
-          this.dataEvento = evento.dataEvento;
+          this.dataEvento = evento.dataEvento ? new Date(evento.dataEvento) : null;
           this.ongId = evento.ongId || 0;          
         },
         error: (erro) => {
