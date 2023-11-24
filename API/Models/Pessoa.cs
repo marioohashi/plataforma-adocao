@@ -9,6 +9,7 @@ public class Pessoa
     public string? NumeroTelefone { get; set; }
     public string? Email { get; set; }
     public int? AnimalId { get; set; }
+    public Animal? Animal { get; set; }
     public DateTime CriadoEm { get; set; }
 
 }

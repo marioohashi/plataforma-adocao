@@ -42,7 +42,10 @@ namespace API
         {
             try
             {
-                Pessoa? pessoaCadastrada = _ctx.Pessoas.FirstOrDefault(x => x.Nome == nome);
+                Pessoa? pessoaCadastrada =
+                _ctx.Pessoas
+                .Include(x => x.Animal)
+                .FirstOrDefault(x => x.Nome == nome);
                 if (pessoaCadastrada != null)
                 {
                     return Ok(pessoaCadastrada);
@@ -105,16 +108,14 @@ namespace API
                 {
                     return NotFound();
                 }
-
-                // Atualizar as propriedades da pessoaExistente com os valores da pessoaAtualizada
-
                 pessoaExistente.Nome = pessoaAtualizada.Nome;
                 pessoaExistente.Endereco = pessoaAtualizada.Endereco;
                 pessoaExistente.NumeroTelefone = pessoaAtualizada.NumeroTelefone;
                 pessoaExistente.Email = pessoaAtualizada.Email;
+                pessoaExistente.Animal = pessoaAtualizada.Animal;
+                pessoaExistente.AnimalId = pessoaAtualizada.AnimalId;
 
-                // Adicione outras propriedades que você deseja atualizar
-
+                _ctx.Pessoas.Update(pessoaExistente);
                 _ctx.SaveChanges();
 
                 return Ok(pessoaExistente);

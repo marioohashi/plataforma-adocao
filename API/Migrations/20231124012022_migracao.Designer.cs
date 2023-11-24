@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20231117233156_populandoDatabase")]
-    partial class populandoDatabase
+    [Migration("20231124012022_migracao")]
+    partial class migracao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,7 +123,7 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("AnimalId")
+                    b.Property<int>("AnimalId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CriadoEm")
@@ -142,6 +142,8 @@ namespace API.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("PessoaId");
+
+                    b.HasIndex("AnimalId");
 
                     b.ToTable("Pessoas");
                 });
@@ -166,6 +168,17 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("ONG");
+                });
+
+            modelBuilder.Entity("API.Models.Pessoa", b =>
+                {
+                    b.HasOne("API.Models.Animal", "Animal")
+                        .WithMany()
+                        .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Animal");
                 });
 #pragma warning restore 612, 618
         }

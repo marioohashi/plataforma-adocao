@@ -18,7 +18,7 @@ Content-Type: application/json
     "Descricao": "Descricao teste",
     "Foto" : "url foto teste",
     "Video" : "video url teste",
-    "ONGId" : 15
+    "ONGId" : 1
 }
 
 ### Atualizar Animal

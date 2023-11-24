@@ -12,7 +12,7 @@ Content-Type: application/json
     "nome" : "Pessoa teste",
     "endereco": "Rua teste",
     "numeroTelefone": "(41)0000-0000",
-    "email": "pessoa@email.com"
+    "email": "pessoa@email.com" 
 }
 
 ### Atualizar Pessoa 

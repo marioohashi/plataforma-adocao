@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20231123202949_initialMigration2")]
-    partial class initialMigration2
+    [Migration("20231124012306_migracao2")]
+    partial class migracao2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -143,6 +143,8 @@ namespace API.Migrations
 
                     b.HasKey("PessoaId");
 
+                    b.HasIndex("AnimalId");
+
                     b.ToTable("Pessoas");
                 });
 
@@ -166,6 +168,15 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("ONG");
+                });
+
+            modelBuilder.Entity("API.Models.Pessoa", b =>
+                {
+                    b.HasOne("API.Models.Animal", "Animal")
+                        .WithMany()
+                        .HasForeignKey("AnimalId");
+
+                    b.Navigation("Animal");
                 });
 #pragma warning restore 612, 618
         }

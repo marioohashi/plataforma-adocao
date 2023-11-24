@@ -141,6 +141,8 @@ namespace API.Migrations
 
                     b.HasKey("PessoaId");
 
+                    b.HasIndex("AnimalId");
+
                     b.ToTable("Pessoas");
                 });
 
@@ -164,6 +166,15 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("ONG");
+                });
+
+            modelBuilder.Entity("API.Models.Pessoa", b =>
+                {
+                    b.HasOne("API.Models.Animal", "Animal")
+                        .WithMany()
+                        .HasForeignKey("AnimalId");
+
+                    b.Navigation("Animal");
                 });
 #pragma warning restore 612, 618
         }

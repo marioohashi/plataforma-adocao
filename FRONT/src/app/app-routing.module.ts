@@ -88,7 +88,7 @@ const routes: Routes = [
   {
     path: 'pages/pessoa/atualizar/:id',
     component: PessoaAtualizarComponent,
-        data: { title: 'Animais para adoção' }
+        data: { title: 'Pessoas' }
 
   }
 ];

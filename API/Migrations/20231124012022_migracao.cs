@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class createDB : Migration
+    public partial class migracao : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,23 +24,6 @@ namespace API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ONGs", x => x.ONGId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pessoas",
-                columns: table => new
-                {
-                    PessoaId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(type: "TEXT", nullable: true),
-                    Endereco = table.Column<string>(type: "TEXT", nullable: true),
-                    NumeroTelefone = table.Column<string>(type: "TEXT", nullable: true),
-                    Email = table.Column<string>(type: "TEXT", nullable: true),
-                    CriadoEm = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pessoas", x => x.PessoaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,6 +77,30 @@ namespace API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Pessoas",
+                columns: table => new
+                {
+                    PessoaId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nome = table.Column<string>(type: "TEXT", nullable: true),
+                    Endereco = table.Column<string>(type: "TEXT", nullable: true),
+                    NumeroTelefone = table.Column<string>(type: "TEXT", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    AnimalId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CriadoEm = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pessoas", x => x.PessoaId);
+                    table.ForeignKey(
+                        name: "FK_Pessoas_Animais_AnimalId",
+                        column: x => x.AnimalId,
+                        principalTable: "Animais",
+                        principalColumn: "AnimalId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Animais_ONGId",
                 table: "Animais",
@@ -103,18 +110,23 @@ namespace API.Migrations
                 name: "IX_Eventos_ONGId",
                 table: "Eventos",
                 column: "ONGId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pessoas_AnimalId",
+                table: "Pessoas",
+                column: "AnimalId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Animais");
-
-            migrationBuilder.DropTable(
                 name: "Eventos");
 
             migrationBuilder.DropTable(
                 name: "Pessoas");
+
+            migrationBuilder.DropTable(
+                name: "Animais");
 
             migrationBuilder.DropTable(
                 name: "ONGs");

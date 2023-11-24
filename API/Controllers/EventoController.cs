@@ -111,14 +111,11 @@ public class EventoController : ControllerBase
                 return NotFound();
             }
 
-            // Atualize os campos do eventoExistente com os valores do eventoAtualizado
             eventoExistente.Nome = eventoAtualizado.Nome;
             eventoExistente.Descricao = eventoAtualizado.Descricao;
             eventoExistente.ONG = eventoAtualizado.ONG;
             eventoExistente.ONGId = eventoAtualizado.ONGId;
             eventoExistente.DataEvento = eventoAtualizado.DataEvento;
-
-            // Você pode continuar atualizando outros campos aqui, conforme necessário.
 
             _ctx.Eventos.Update(eventoExistente);
             _ctx.SaveChanges();
